@@ -9,7 +9,7 @@ title: ADAHomebroker
 %% TODO: 1. Ir atualizando os métodos das classes conforme a necessidade;
 %% TODO: 2. Modelar classes dos outros pacotes.
 classDiagram
-
+direction RL
 namespace model {
     class ModelClasses
     class ModelCRCCards
@@ -71,14 +71,16 @@ class Transaction{
     Long id
     BigDecimal amount
     LocalDateTime dateTime
+    User user
     getters()
     setters()
 }
 
 }
 
-User --> Transaction
+User -- Transaction
 User -- Portfolio
+User --> Order
 
 Order --> Portfolio
 Order --> Stock
