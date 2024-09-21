@@ -1,4 +1,4 @@
-## (Em andamento)Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
+# 🛠️ (Em andamento) Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
 
 ## Diagrama de classes e CRC cards
 
@@ -173,3 +173,11 @@ namespace controller{
 <p align="center">
     <img src="./README-contents/EERProjetoB3.png" alt="Imagem do diagrama de modelagem de dados do projeto.">
 </p>
+
+### Referências
+
+BROOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. **UML, guia do usuário**. trad. Fábio Freitas da Silva. Rio de Janeiro: Campus, 2000.
+
+MARTIN, Robert C. **Código limpo**: habilidades práticas do Agile Software. Rio de Janeiro: Alta Books, 2011.
+
+RUMBAUGH, James et al. **Modelagem e projetos baseados em objetos**. trad. Dalton Conde de Alencar. Rio de Janeiro: Campus, 1994.
