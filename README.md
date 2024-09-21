@@ -1,4 +1,4 @@
-## (Em andamento)Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
+# 🛠️ (Em andamento) Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
 
 ## Diagrama de classes e CRC cards
 
@@ -9,7 +9,7 @@ title: ADAHomebroker
 %% TODO: 1. Ir atualizando os métodos das classes conforme a necessidade;
 %% TODO: 2. Modelar classes dos outros pacotes.
 classDiagram
-
+direction RL
 namespace model {
     class ModelClasses
     class ModelCRCCards
@@ -37,7 +37,8 @@ class Order{
     int status
     Portfolio portfolio
     ENUM.Type type
-    Map ~Stocks~ stocks
+    int stockQt
+    Stock stock
     getters()
     setters()
 }
@@ -70,14 +71,16 @@ class Transaction{
     Long id
     BigDecimal amount
     LocalDateTime dateTime
+    User user
     getters()
     setters()
 }
 
 }
 
-User --> Transaction
+User -- Transaction
 User -- Portfolio
+User --> Order
 
 Order --> Portfolio
 Order --> Stock
@@ -170,3 +173,11 @@ namespace controller{
 <p align="center">
     <img src="./README-contents/EERProjetoB3.png" alt="Imagem do diagrama de modelagem de dados do projeto.">
 </p>
+
+### Referências
+
+BROOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. **UML, guia do usuário**. trad. Fábio Freitas da Silva. Rio de Janeiro: Campus, 2000.
+
+MARTIN, Robert C. **Código limpo**: habilidades práticas do Agile Software. Rio de Janeiro: Alta Books, 2011.
+
+RUMBAUGH, James et al. **Modelagem e projetos baseados em objetos**. trad. Dalton Conde de Alencar. Rio de Janeiro: Campus, 1994.
