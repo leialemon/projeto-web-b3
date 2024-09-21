@@ -167,3 +167,6 @@ namespace controller{
 
 ## Modelagem de dados
 
+<p align="center">
+    <img src="./README-contents/EERProjetoB3.png" alt="Imagem do diagrama de modelagem de dados do projeto.">
+</p>
