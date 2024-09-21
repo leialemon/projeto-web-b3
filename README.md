@@ -37,7 +37,8 @@ class Order{
     int status
     Portfolio portfolio
     ENUM.Type type
-    Map ~Stocks~ stocks
+    int stockQt
+    Stock stock
     getters()
     setters()
 }
