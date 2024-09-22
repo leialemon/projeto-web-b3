@@ -1,39 +1,49 @@
 package com.JJH.homebroker.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
-public class User {
+@RequestMapping("api/v1/users")
+public class User{
 
     @Id
-    @Column(length = 11)
+    @Column(name = " user_cpf", length = 11, nullable = false)
     private String cpf;
 
-    @Column
+    @Column(name = "user_name", nullable = false)
     private String name;
 
     // Verificar com regex?
-    @Column
-    private String email;
+    @Column(name = "user_mail", nullable = false)
+    private String mail;
 
     // TODO: implementar criptografia
-    @Column
+    @Column(name = "user_password", nullable = false)
     private String password;
 
-    @Column(precision = 10, scale = 2)
+    @Column(name = "user_birthday", nullable = false)
+    private LocalDate birthday;
+
+    @Column(name = "user_balance", precision = 16, scale = 4, nullable = false)
     private BigDecimal balance;
 
-    // TODO: implementar ligação com chave estrangeira
+
+    // Como trabalhar com um item que só garante unicidade através de duas chaves primárias?
     private List<Portfolio> portfolios;
+
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "transaction_id")
     private List<Transaction> transactionHistory;
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
     private List<Order> orderHistory;
+
 }
