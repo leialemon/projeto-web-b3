@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Getter @Setter
 @Entity
 @RequestMapping("api/v1/brokers")
