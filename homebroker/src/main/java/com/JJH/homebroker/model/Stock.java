@@ -5,22 +5,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
-public class Stock {
-
+@RequestMapping("api/v1/stocks")
+public class Stock{
     @Id
-    @Column
+    @Column(name = "stock_id", nullable = false)
     private String ticker;
 
-    @Column
+    @Column(name = "stock_name")
     private String name;
 
-    //TODO: manter como bigdecimal ou mudar pra double?
-    @Column
+    @Column(name = "stock_price")
     private BigDecimal price;
 }

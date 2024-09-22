@@ -1,4 +1,4 @@
 package com.JJH.homebroker.model;
 
-public class Broker {
+public class Broker{
 }
