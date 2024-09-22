@@ -28,6 +28,9 @@ public class Order{
     @Column(name = "order_type", nullable = false)
     private OrderType orderType;
 
+    @Column(name = "order_status", nullable = false)
+    private OrderStatus orderStatus;
+
     @Column(name = "order_stock_qt", nullable = false)
     private int stockQt;
 
