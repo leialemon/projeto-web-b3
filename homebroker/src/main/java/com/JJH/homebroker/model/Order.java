@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter @Setter
 @Entity
@@ -19,8 +20,14 @@ public class Order{
     @Column(name = "order_price", nullable = false)
     private BigDecimal price;
 
+    @Column(name = "order_date_time", nullable = false)
+    private LocalDateTime orderDateTime;
+
     @Column(name = "order_executed_price") // Preço de StopLoss e afins?
     private BigDecimal executedPrice;
+
+    @Column(name = "order_executed_date_time")
+    private LocalDateTime executedDateTime;
 
     @Column(name = "order_portfolio", nullable = false)
     private Portfolio portfolio;
