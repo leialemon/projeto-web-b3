@@ -15,6 +15,11 @@ public enum OrderType{
     DISCRETIONARY_ORDER("Ordem Discricionária"),
     GTC("Good 'Til Cancelled");
 
-    OrderType(String name){}
+    private String name;
+
+    OrderType(String name){
+        this.name = name;
+
+    }
 
 }

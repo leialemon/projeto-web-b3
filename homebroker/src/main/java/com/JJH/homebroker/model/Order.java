@@ -26,6 +26,12 @@ public class Order{
     private Portfolio portfolio;
 
     @Column(name = "order_type", nullable = false)
-    private Enum
+    private OrderType orderType;
+
+    @Column(name = "order_stock_qt", nullable = false)
+    private int stockQt;
+
+    @Column(name = "order_stock", nullable = false)
+    private Stock stock;
 
 }
