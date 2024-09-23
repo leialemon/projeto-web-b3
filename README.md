@@ -11,11 +11,6 @@
 ```mermaid
 classDiagram
 direction RL
-namespace model {
-    class ModelClasses
-    class ModelCRCCards
-}
-
 namespace ModelClasses {
 
 class User {
@@ -92,6 +87,7 @@ Portfolio --> Stock
 ## CRC Cards
 
 ```mermaid
+classDiagram
 namespace ModelCRCCards{
     class UserCRC
     class OrderCRC
