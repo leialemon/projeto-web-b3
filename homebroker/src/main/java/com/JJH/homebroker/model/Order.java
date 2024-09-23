@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter @Setter
@@ -30,6 +31,9 @@ public class Order{
 
     @Column(name = "order_executed_date_time")
     private LocalDateTime executedDateTime;
+
+    @Column(name = "expiration_date")
+    private LocalDate expirationDate;
 
     @Column(name = "order_portfolio", nullable = false)
     private Portfolio portfolio;
