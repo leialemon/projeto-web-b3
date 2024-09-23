@@ -10,7 +10,6 @@
 
 ```mermaid
 classDiagram
-direction RL
 namespace ModelClasses {
 
 class User {
@@ -154,18 +153,6 @@ namespace StockCRC{
         The negotiable asset. \n Contains the price that will inform \n if an automatic order will trigger.
     }
     class StockCollaboration
-}
-
-namespace repository{
-    class Repository
-}
-
-namespace service{
-    class Service
-}
-
-namespace controller{
-    class Controller
 }
 ```
 
