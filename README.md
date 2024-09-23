@@ -88,6 +88,7 @@ Portfolio --> Stock
 
 ```mermaid
 classDiagram
+direction RL
 namespace ModelCRCCards{
     class UserCRC
     class OrderCRC
