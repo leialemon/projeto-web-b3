@@ -29,6 +29,9 @@ public class User{
     @Column(name = "user_password", nullable = false)
     private String password;
 
+    @Column(name = "user_token", nullable = false)
+    private String token;
+
     @Column(name = "user_birthday", nullable = false)
     private LocalDate birthday;
 
