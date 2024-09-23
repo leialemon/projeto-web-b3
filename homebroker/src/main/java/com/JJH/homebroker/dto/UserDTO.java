@@ -1,5 +1,8 @@
-package com.JJH.homebroker.model;
+package com.JJH.homebroker.dto;
 
+import com.JJH.homebroker.model.Order;
+import com.JJH.homebroker.model.Portfolio;
+import com.JJH.homebroker.model.Transaction;
 import lombok.Getter;
 import lombok.Setter;
 
