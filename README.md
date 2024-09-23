@@ -1,15 +1,14 @@
 # 🛠️ (Em andamento) Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
 ## Tecnologias utilizadas
-[![Tecnologias utilizadas](https://skillicons.dev/icons?i=java,maven,spring,postman,idea)](https://skillicons.dev)
+<p align="center">
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=java,maven,spring,postman,idea" alt="ícones das tecnologias usadas no projeto: java, maven, spring, postman e idea.">
+    </a>
+</p>
 
-## Diagrama de classes e CRC cards
+## Diagrama de classes 
 
 ```mermaid
----
-title: ADAHomebroker
----
-%% TODO: 1. Ir atualizando os métodos das classes conforme a necessidade;
-%% TODO: 2. Modelar classes dos outros pacotes.
 classDiagram
 direction RL
 namespace model {
@@ -20,11 +19,11 @@ namespace model {
 namespace ModelClasses {
 
 class User {
+    String cpf - key
     String name
     String password
     String email
     String birthday
-    String cpf - key
     BigDecimal balance
     List ~Portfolio~ portfolios
     List ~Transaction~ transactionHistory
@@ -89,7 +88,10 @@ Order --> Stock
 
 Portfolio --> Broker
 Portfolio --> Stock
+```
+## CRC Cards
 
+```mermaid
 namespace ModelCRCCards{
     class UserCRC
     class OrderCRC
