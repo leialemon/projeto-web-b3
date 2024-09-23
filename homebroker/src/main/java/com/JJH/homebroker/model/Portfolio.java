@@ -20,7 +20,6 @@ public class Portfolio{
     private Broker broker;
 
     @OneToMany(mappedBy = "stock", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "stock_id")
     private List<Stock> stocks;
 
 }
