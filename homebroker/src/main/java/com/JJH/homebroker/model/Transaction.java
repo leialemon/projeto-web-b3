@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 public class Transaction{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tramsaction_id", nullable = false)
-    private long id;
+    @Column(name = "transaction_id", nullable = false)
+    private Long id;
 
     @Column(name = "transaction_amount", nullable = false)
     private BigDecimal amount;

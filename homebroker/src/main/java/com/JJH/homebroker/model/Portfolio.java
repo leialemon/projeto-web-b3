@@ -14,7 +14,7 @@ public class Portfolio{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "portfolio_id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "portfolio_broker", nullable = false)
     private Broker broker;
