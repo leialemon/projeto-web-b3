@@ -1,4 +1,6 @@
 # 🛠️ (Em andamento) Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
+## Tecnologias utilizadas
+[![Tecnologias utilizadas](https://skillicons.dev/icons?i=java,maven,spring,postman,idea)](https://skillicons.dev)
 
 ## Diagrama de classes e CRC cards
 
@@ -174,7 +176,11 @@ namespace controller{
     <img src="./README-contents/EERProjetoB3.png" alt="Imagem do diagrama de modelagem de dados do projeto.">
 </p>
 
+## Padrões e escolhas de design
+
 ### Referências
+
+ANICHE, Maurício. **Orientação a Objetos e SOLID para ninjas**: projetando classes flexíveis. São Paulo: Casa do Código, 2015.
 
 BROOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. **UML, guia do usuário**. trad. Fábio Freitas da Silva. Rio de Janeiro: Campus, 2000.
 
