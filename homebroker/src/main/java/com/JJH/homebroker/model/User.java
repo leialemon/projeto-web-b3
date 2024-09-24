@@ -3,15 +3,13 @@ package com.JJH.homebroker.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
-@RequestMapping("api/v1/users")
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +26,6 @@ public class User{
     @Column(name = "user_mail", nullable = false)
     private String mail;
 
-    // TODO: implementar criptografia
     @Column(name = "user_password", nullable = false)
     private String password;
 
@@ -41,16 +38,13 @@ public class User{
     @Column(name = "user_balance", precision = 16, scale = 4, nullable = false)
     private BigDecimal balance;
 
-
-    // Como trabalhar com um item que só garante unicidade através de duas chaves primárias?
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Portfolio> portfolios;
 
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "transaction_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transaction> transactionHistory;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orderHistory;
 
 }

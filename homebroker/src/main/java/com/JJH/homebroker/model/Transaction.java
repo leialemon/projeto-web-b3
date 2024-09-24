@@ -3,14 +3,12 @@ package com.JJH.homebroker.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
-@RequestMapping("api/v1/transactions")
 public class Transaction{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +21,8 @@ public class Transaction{
     @Column(name = "transaction_date_time", nullable = false)
     private LocalDateTime transactionDateTime;
 
-    @Column(name = "transaction_user", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 }

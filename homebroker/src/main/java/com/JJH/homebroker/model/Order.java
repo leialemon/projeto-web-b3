@@ -5,24 +5,27 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.web.bind.annotation.RequestMapping;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
-@RequestMapping("api/v1/orders")
 public class Order{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
     private Long id;
 
-    @Getter(AccessLevel.NONE)
     @Column(name = "order_price", nullable = false)
+    @Getter(AccessLevel.NONE)
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @CreationTimestamp
     private Instant orderDateTime;
@@ -35,9 +38,6 @@ public class Order{
 
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
-
-    @Column(name = "order_portfolio", nullable = false)
-    private Portfolio portfolio;
 
     @Column(name = "order_type", nullable = false)
     private OrderType orderType;
@@ -52,7 +52,7 @@ public class Order{
     private Stock stock;
 
     public BigDecimal calculateTotal(){
-        return this.price = stock.getPrice().multiply(BigDecimal.valueOf(this.stockQt));
+        return this.price = this.stock.getPrice().multiply(BigDecimal.valueOf(this.stockQt));
         // Usar método da classe Broker para checar se há incidência de Fee;
         //Se houver incidência de fee:
         //CalculationRule calculateFee = this.portfolio.getBroker().getFee().getCalculationRule();
@@ -60,6 +60,6 @@ public class Order{
     }
 
     public BigDecimal getPrice(){
-        return this.price;
+        return calculateTotal();
     }
 }
