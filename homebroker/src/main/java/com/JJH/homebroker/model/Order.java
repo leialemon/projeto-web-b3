@@ -51,15 +51,15 @@ public class Order{
     @Column(name = "order_stock", nullable = false)
     private Stock stock;
 
-    public BigDecimal calculateTotal(){
-        return this.price = this.stock.getPrice().multiply(BigDecimal.valueOf(this.stockQt));
-        // Usar método da classe Broker para checar se há incidência de Fee;
-        //Se houver incidência de fee:
-        //CalculationRule calculateFee = this.portfolio.getBroker().getFee().getCalculationRule();
-        //return calculateFee(this.portfolio.getBroker().getFee().getAmount(), this.price);
-    }
-
-    public BigDecimal getPrice(){
-        return calculateTotal();
-    }
+//    public BigDecimal calculateTotal(){
+//        return this.price = stock.getPrice().multiply(BigDecimal.valueOf(this.stockQt));
+//        // Usar método da classe Broker para checar se há incidência de Fee;
+//        //Se houver incidência de fee:
+//        //CalculationRule calculateFee = this.portfolio.getBroker().getFee().getCalculationRule();
+//        //return calculateFee(this.portfolio.getBroker().getFee().getAmount(), this.price);
+//    }
+//
+//    public BigDecimal getPrice(){
+//        return calculateTotal();
+//    }
 }

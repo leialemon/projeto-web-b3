@@ -19,7 +19,6 @@ public class Portfolio{
     private Broker broker;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "stock_id")
     private List<Stock> stocks;
 
     @ManyToOne
