@@ -13,9 +13,12 @@ import java.util.List;
 @Entity
 @RequestMapping("api/v1/users")
 public class User{
-
     @Id
-    @Column(name = " user_cpf", length = 11, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id", nullable = false)
+    private Long id;
+
+    @Column(name = "user_cpf", length = 11, nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "user_name", nullable = false)
