@@ -17,4 +17,13 @@ public class Portfolio {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Stock> stocks;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Broker broker;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Order> orderHistory;
 }
