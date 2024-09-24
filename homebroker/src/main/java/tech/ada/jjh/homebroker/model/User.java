@@ -44,6 +44,7 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Portfolio> portfolios;
 
+    @OneToMany
     private List<Order> orderHistory;
 
     //Pedir para professor conferir
