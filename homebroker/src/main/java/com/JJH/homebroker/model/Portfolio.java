@@ -16,7 +16,8 @@ public class Portfolio{
     @Column(name = "portfolio_id", nullable = false)
     private Long id;
 
-    @Column(name = "portfolio_broker", nullable = false)
+    @OneToOne(mappedBy = "broker", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "broker_id")
     private Broker broker;
 
     @OneToMany(mappedBy = "stock", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
