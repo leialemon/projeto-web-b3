@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Table(name = "stock_order")
-public class Order {
+public class Order implements Comparable<Order>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,6 +38,15 @@ public class Order {
         //verificar a incidência de Fees, se houver, calcular;
         // total =  total.multiply(getPortfolio().getBroker().getFee);
         setPrice(total);
+    }
+
+    @Override
+    public int compareTo(Order o) {
+        int comparer = this.getDateTimeExecution().compareTo(o.getDateTimeExecution());
+        if (comparer == 0){
+            return this.getId().compareTo(o.getId());
+        }
+        return comparer;
     }
 
     //TODO perguntar ao professor se é uma boa prática embutir o calculateTotal no getPrice();

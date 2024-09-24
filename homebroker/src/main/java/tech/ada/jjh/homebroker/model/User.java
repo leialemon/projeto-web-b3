@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -43,10 +44,15 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Portfolio> portfolios;
 
+    private List<Order> orderHistory;
 
-//    public List<Order> getOrderHistory(){
-//        this.setOrderHistory(new ArrayList<>());
-//        //pegar todas as orders dos portfolios, adicionar nessa lista e ordenar por data.
-//        return this.orderHistory;
-//    }
+    //Pedir para professor conferir
+    public List<Order> getOrderHistory(){
+        this.setOrderHistory(new ArrayList<>());
+        for (Portfolio p : this.getPortfolios()){
+            this.orderHistory.addAll(p.getOrderHistory());
+        }
+        this.orderHistory.sort(null);
+        return this.orderHistory;
+    }
 }
