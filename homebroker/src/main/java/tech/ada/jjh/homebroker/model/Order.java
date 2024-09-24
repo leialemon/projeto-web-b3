@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -26,6 +27,19 @@ public class Order {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "portfolio_id")
+    @JoinColumn(name = "portfolio_id", nullable = false)
     private Portfolio portfolio;
+
+    @Column
+    private LocalDateTime dateTimeExecution;
+
+    public void calculateTotal(){
+        BigDecimal total = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));
+        //verificar a incidência de Fees, se houver, calcular;
+        // total =  total.multiply(getPortfolio().getBroker().getFee);
+        setPrice(total);
+    }
+
+    //TODO perguntar ao professor se é uma boa prática embutir o calculateTotal no getPrice();
+    //TODO reimplementar status e type;
 }
