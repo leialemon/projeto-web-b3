@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Getter @Setter
 @Entity
 @RequestMapping("api/v1/brokers")
@@ -17,7 +19,7 @@ public class Broker{
     @Column(name = "broker_name", nullable = false)
     private String name;
 
-    /*@Column(name = "broker_fees")         Talvez seja necessária outra classe.
-    private Map<String, brokerFee> fee;*/
+    private List<Fee> fees;
 
+    //TODO métodos para checar incidência de taxas.
 }

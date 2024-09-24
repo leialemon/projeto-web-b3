@@ -1,11 +1,11 @@
 package com.JJH.homebroker.model;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,6 +20,7 @@ public class Order{
     @Column(name = "order_id")
     private Long id;
 
+    @Getter(AccessLevel.NONE)
     @Column(name = "order_price", nullable = false)
     private BigDecimal price;
 
@@ -50,4 +51,15 @@ public class Order{
     @Column(name = "order_stock", nullable = false)
     private Stock stock;
 
+    public BigDecimal calculateTotal(){
+        return this.price = stock.getPrice().multiply(BigDecimal.valueOf(this.stockQt));
+        // Usar método da classe Broker para checar se há incidência de Fee;
+        //Se houver incidência de fee:
+        //CalculationRule calculateFee = this.portfolio.getBroker().getFee().getCalculationRule();
+        //return calculateFee(this.portfolio.getBroker().getFee().getAmount(), this.price);
+    }
+
+    public BigDecimal getPrice(){
+        return this.price;
+    }
 }
