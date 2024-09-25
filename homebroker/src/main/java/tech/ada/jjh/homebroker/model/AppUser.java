@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "app_user")
 public class AppUser {
 
-    public AppUser(){
+   public AppUser(){
         setBalance(BigDecimal.valueOf(0.00));
         setOrderHistory(new ArrayList<>());
         setPortfolios(new ArrayList<>());
