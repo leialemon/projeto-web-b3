@@ -14,6 +14,25 @@ import java.util.List;
 @Table(name = "app_user")
 public class AppUser {
 
+    public AppUser(){
+        setBalance(BigDecimal.valueOf(0.00));
+        setOrderHistory(new ArrayList<>());
+        setPortfolios(new ArrayList<>());
+        setTransactionHistory(new ArrayList<>());
+    }
+
+//    public AppUser(String cpf, String name, String email, String password, String birthDate){
+//        this.cpf = cpf;
+//        this.name = name;
+//        this.email = email;
+//        this.password = password;
+//        this.birthDate = birthDate;
+//        setBalance(BigDecimal.valueOf(0.00));
+//        setOrderHistory(new ArrayList<>());
+//        setPortfolios(new ArrayList<>());
+//        setTransactionHistory(new ArrayList<>());
+//    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -48,7 +67,6 @@ public class AppUser {
 
     //Pedir para professor conferir
     public List<Order> getOrderHistory(){
-        this.setOrderHistory(new ArrayList<>());
         for (Portfolio p : this.getPortfolios()){
             this.orderHistory.addAll(p.getOrderHistory());
         }

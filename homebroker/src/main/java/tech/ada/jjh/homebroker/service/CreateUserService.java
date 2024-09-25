@@ -6,6 +6,7 @@ import tech.ada.jjh.homebroker.repository.UserRepository;
 
 @Service
 public class CreateUserService {
+    //É aqui que deve ficar o check de idade?
     private final UserRepository userRepository;
 
     public CreateUserService(UserRepository userRepository){
