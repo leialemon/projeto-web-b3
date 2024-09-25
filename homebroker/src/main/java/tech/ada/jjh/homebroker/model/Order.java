@@ -39,10 +39,10 @@ public class Order implements Comparable<Order>{
     @Column(nullable = false)
     private Integer stockQuantity;
 
-    @Column(name = "order_price", precision = 16, scale = 4)
+    @Column(name = "order_raw_price", precision = 16, scale = 4)
     private BigDecimal rawPrice;
 
-    @Column(name = "order_price", precision = 16, scale = 4)
+    @Column(name = "order_total_price", precision = 16, scale = 4)
     private BigDecimal totalPrice;
 
     @ManyToOne
