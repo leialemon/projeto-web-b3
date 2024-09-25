@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Setter
@@ -32,6 +33,9 @@ public class Order implements Comparable<Order>{
 
     @Column
     private LocalDateTime dateTimeExecution;
+
+    @OneToMany
+    private List<Fee> fees;
 
     public void calculateTotal(){
         BigDecimal total = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));

@@ -22,6 +22,6 @@ public class Stock {
     @Column
     private String name;
 
-    @Column(name = "stock_price", precision = 16, scale = 4)
+    @Column(name = "stock_price", precision = 16, scale = 2)
     private BigDecimal price;
 }

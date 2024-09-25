@@ -3,21 +3,21 @@ package tech.ada.jjh.homebroker.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
 
 @Entity
 @Setter
 @Getter
-public class Broker {
+public class Fee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
 
-    @Column(name = "broker_name")
-    private String name;
+    @Column(nullable = false)
+    private Double amount;
 
-    @OneToMany
-    private List<Fee> fees;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private FeeType type;
 }
