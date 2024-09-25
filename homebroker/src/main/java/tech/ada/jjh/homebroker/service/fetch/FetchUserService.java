@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FetchUserService {
+public class FetchUserService{
 
-    private  final UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public FetchUserService(UserRepository userRepository){
         this.userRepository = userRepository;
