@@ -6,8 +6,7 @@ public enum FeeType{
     CUSTODY_PERCENTILE(new FeePercentileCalculationRule()),
     CUSTODY_FIXED(new FeeFixedCalculationRule()),
     TAX(new FeePercentileCalculationRule()),
-    EMOLUMENT_NEGOTIATION(new FeePercentileCalculationRule()),
-    EMOLUMENT_LIQUIDATION(new FeePercentileCalculationRule())
+    EMOLUMENT(new FeePercentileCalculationRule()),
     ;
     private FeeCalculationRule calculationRule;
 

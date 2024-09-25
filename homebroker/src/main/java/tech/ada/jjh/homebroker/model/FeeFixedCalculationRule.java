@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 public class FeeFixedCalculationRule implements FeeCalculationRule{
     @Override
     public BigDecimal calculate(BigDecimal orderPrice, Double feeAmount){
-        return orderPrice.add(BigDecimal.valueOf(feeAmount));
-
+        return BigDecimal.valueOf(feeAmount);
     }
-
 }

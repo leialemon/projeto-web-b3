@@ -14,10 +14,13 @@ public class Fee {
     @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "fee_amount", nullable = false)
     private Double amount;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "fee_type", nullable = false)
     private FeeType type;
+
+    @Column(name = "fee_name", nullable = false)
+    String name;
 }
