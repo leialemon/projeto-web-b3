@@ -20,7 +20,7 @@ public class Broker {
     @Column(nullable = false)
     private Long id;
 
-    @Column(name = "broker_name")
+    @Column(name = "broker_name", nullable = false, unique = true)
     private String name;
 
     @OneToMany

@@ -20,7 +20,7 @@ public class StockController{
 
     }
 
-    @GetMapping
+    @GetMapping()
     public List<Stock> getAll(){
         return fetchStockService.fetchAll();
 

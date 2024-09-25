@@ -8,9 +8,7 @@ import java.util.Optional;
 
 @Service
 public class FetchPortfolioService {
-
     private final PortfolioRepository portfolioRepository;
-
     public FetchPortfolioService(PortfolioRepository portfolioRepository){
         this.portfolioRepository = portfolioRepository;
     }
@@ -19,7 +17,9 @@ public class FetchPortfolioService {
         return portfolioRepository.findAll();
     }
 
+
     public Optional<Portfolio> fetchById(Long id){
         return portfolioRepository.findById(id);
     }
 }
+
