@@ -1,6 +1,6 @@
 package tech.ada.jjh.homebroker.model;
 
-public enum FeeType {
+public enum FeeType{
     BROKERAGE_PERCENTILE(new FeePercentileCalculationRule()),
     BROKERAGE_FIXED(new FeeFixedCalculationRule()),
     CUSTODY_PERCENTILE(new FeePercentileCalculationRule()),

@@ -2,15 +2,14 @@ package tech.ada.jjh.homebroker.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tech.ada.jjh.homebroker.model.AppUser;
-import tech.ada.jjh.homebroker.service.CreateUserService;
-import tech.ada.jjh.homebroker.service.FetchUserService;
+import tech.ada.jjh.homebroker.service.create.CreateUserService;
+import tech.ada.jjh.homebroker.service.fetch.FetchUserService;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
-
     private final CreateUserService createUserService;
     private final FetchUserService fetchUserService;
 

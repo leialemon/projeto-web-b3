@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service;
+package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
 import tech.ada.jjh.homebroker.model.AppUser;

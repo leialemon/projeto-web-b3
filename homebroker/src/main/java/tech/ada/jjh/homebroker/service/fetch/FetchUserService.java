@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service;
+package tech.ada.jjh.homebroker.service.fetch;
 
 
 import org.springframework.stereotype.Service;
