@@ -21,18 +21,6 @@ public class AppUser {
         setTransactionHistory(new ArrayList<>());
     }
 
-//    public AppUser(String cpf, String name, String email, String password, String birthDate){
-//        this.cpf = cpf;
-//        this.name = name;
-//        this.email = email;
-//        this.password = password;
-//        this.birthDate = birthDate;
-//        setBalance(BigDecimal.valueOf(0.00));
-//        setOrderHistory(new ArrayList<>());
-//        setPortfolios(new ArrayList<>());
-//        setTransactionHistory(new ArrayList<>());
-//    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
