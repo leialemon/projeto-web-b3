@@ -3,12 +3,17 @@ package tech.ada.jjh.homebroker.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
 public class Broker {
+
+    public Broker(){
+        this.fees = new ArrayList<>();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
