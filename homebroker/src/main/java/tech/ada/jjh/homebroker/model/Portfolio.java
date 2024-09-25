@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,12 @@ import java.util.Map;
 @Entity
 @Setter @Getter
 public class Portfolio{
+
+    public Portfolio(){
+        this.stocks = new ArrayList<>();
+        this.orderHistory = new ArrayList<>();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
