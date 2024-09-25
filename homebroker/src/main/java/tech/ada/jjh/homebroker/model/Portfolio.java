@@ -16,7 +16,7 @@ public class Portfolio {
     private Long id;
 
     @ManyToOne
-    private User user;
+    private AppUser appUser;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Stock> stocks;

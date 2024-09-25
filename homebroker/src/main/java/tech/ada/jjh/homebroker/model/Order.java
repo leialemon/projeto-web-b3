@@ -39,7 +39,7 @@ public class Order implements Comparable<Order>{
 
     public void calculateTotal(){
         BigDecimal total = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));
-        //verificar a incidência de Fees, se houver, calcular;
+        //verificar a incidência de Fees, se houver, adicionar as fees da Broker e calcular;
         // total =  total.multiply(getPortfolio().getBroker().getFee);
         setPrice(total);
     }
@@ -53,6 +53,6 @@ public class Order implements Comparable<Order>{
         return comparer;
     }
 
-    //TODO perguntar ao professor se é uma boa prática embutir o calculateTotal no getPrice();
+    //TODO perguntar ao professor se é uma boa prática embutir o calculateTotal no getPrice(); Perguntar também em relação ao getFees().
     //TODO reimplementar status e type;
 }

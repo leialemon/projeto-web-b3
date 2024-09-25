@@ -55,7 +55,7 @@ class Broker{
 }
 
 class Portfolio{
-    User user
+    User appUser
     Broker broker
     List ~Stock~ stocks
     getters()
@@ -66,7 +66,7 @@ class Transaction{
     Long id
     BigDecimal amount
     LocalDateTime dateTime
-    User user
+    User appUser
     getters()
     setters()
 }
@@ -99,7 +99,7 @@ namespace ModelCRCCards{
 
 namespace UserCRC{
     class UserResponsibiliy{
-        Represents the user of the system. \n It's the starting point for most of the processes 
+        Represents the appUser of the system. \n It's the starting point for most of the processes 
     }
     class UserCollaboration{
         Portfolio
@@ -110,7 +110,7 @@ namespace UserCRC{
 
 namespace OrderCRC{
     class OrderResponsibiliy{
-        Represents the user's orders. \n Manages the contents of a portfolio.
+        Represents the appUser's orders. \n Manages the contents of a portfolio.
     }
     class OrderCollaboration{
         Portfolio
@@ -120,7 +120,7 @@ namespace OrderCRC{
 
 namespace PortfolioCRC{
     class PortfolioResponsibiliy{
-        Created when an user adds a broker. \n Contains Stocks. \n All orders must be placed from a portfolio.
+        Created when an appUser adds a broker. \n Contains Stocks. \n All orders must be placed from a portfolio.
     }
     class PortfolioCollaboration{
         Broker
@@ -132,7 +132,7 @@ namespace PortfolioCRC{
 
 namespace TransactionCRC{
     class TransactionResponsibiliy{
-        Modifies an user's balance.
+        Modifies an appUser's balance.
     }
     class TransactionCollaboration{
         User
@@ -141,7 +141,7 @@ namespace TransactionCRC{
 
 namespace BrokerCRC{
     class BrokerResponsibiliy{
-        Represents the brokerage firms through which \n the user places the orders. \n Creates an unique portfolio for the user. \n Defines if fees are charged in an order \n and their amounts.
+        Represents the brokerage firms through which \n the appUser places the orders. \n Creates an unique portfolio for the appUser. \n Defines if fees are charged in an order \n and their amounts.
     }
     class BrokerCollaboration{
         Portfolio
