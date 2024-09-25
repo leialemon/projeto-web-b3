@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,20 @@ import java.util.List;
 @Getter
 @Table(name = "stock_order")
 public class Order implements Comparable<Order>{
+
+    public Order(){
+        this.fees = new ArrayList<>();
+        Fee b3emolument = new Fee();
+        b3emolument.setAmount(0.03);
+        b3emolument.setName("b3emoluments");
+        b3emolument.setType(FeeType.EMOLUMENT);
+        this.fees.add(b3emolument);
+        Fee taxes = new Fee();
+        taxes.setName("taxes");
+        taxes.setAmount(0.02);
+        taxes.setType(FeeType.TAX);
+        this.fees.add(taxes);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +40,10 @@ public class Order implements Comparable<Order>{
     private Integer stockQuantity;
 
     @Column(name = "order_price", precision = 16, scale = 4)
-    private BigDecimal price;
+    private BigDecimal rawPrice;
+
+    @Column(name = "order_price", precision = 16, scale = 4)
+    private BigDecimal totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "portfolio_id", nullable = false)
@@ -37,11 +55,20 @@ public class Order implements Comparable<Order>{
     @OneToMany
     private List<Fee> fees;
 
-    public void calculateTotal(){
-        BigDecimal total = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));
-        //verificar a incidência de Fees, se houver, adicionar as fees da Broker e calcular;
-        // total =  total.multiply(getPortfolio().getBroker().getFee);
-        setPrice(total);
+    public void calculateRawPrice(){
+        BigDecimal rawTotal = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));
+        setRawPrice(rawTotal);
+    }
+
+    public void calculateTotalPrice(){
+        this.fees.addAll(getPortfolio().getBroker().getFees());
+        BigDecimal rawTotal = getRawPrice();
+        BigDecimal feeTotal = BigDecimal.ZERO;
+        for (Fee fee : this.fees){
+            feeTotal = feeTotal.add(fee.getType().getCalculationRule().calculate(rawTotal, fee.getAmount()));
+        }
+        rawTotal = rawTotal.add(feeTotal);
+        setTotalPrice(rawTotal);
     }
 
     @Override
