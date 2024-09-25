@@ -22,8 +22,5 @@ public class PortfolioController {
     public List<Portfolio> fetchAll(){
         return fetchPortfolioService.fetchAll();
     }
-
-//    public Portfolio createPortfolio(){
-//
-//    }
+    //TODO método create Portfolio
 }

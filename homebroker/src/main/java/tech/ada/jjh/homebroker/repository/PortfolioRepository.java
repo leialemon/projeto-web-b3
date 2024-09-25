@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
-    List<Portfolio> findAllByUser(AppUser user);
 }
