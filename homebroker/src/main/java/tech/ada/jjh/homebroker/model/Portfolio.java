@@ -22,7 +22,7 @@ public class Portfolio{
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Stock> stocks;
 
-    Map<String, Map<String, Integer>> outerMap = new HashMap<>();
+    /*Map<String, Map<String, Integer>> outerMap = new HashMap<>();*/
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Broker broker;

@@ -7,10 +7,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Setter
-@Getter
-public class Stock {
-
+@Setter @Getter
+public class Stock{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
