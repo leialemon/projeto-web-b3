@@ -2,7 +2,7 @@
 ## Tecnologias utilizadas
 <p align="center">
     <a href="https://skillicons.dev">
-        <img src="https://skillicons.dev/icons?i=java,maven,spring,postman,idea" alt="ícones das tecnologias usadas no projeto: java, maven, spring, postman e idea.">
+        <img src="https://skillicons.dev/icons?i=java,maven,spring,hibernate,postman,idea" alt="ícones das tecnologias usadas no projeto: java, maven, spring, postman e idea.">
     </a>
 </p>
 
@@ -196,13 +196,3 @@ namespace StockCRC{
 </p>
 
 ## Padrões e escolhas de design
-
-### Referências
-
-ANICHE, Maurício. **Orientação a Objetos e SOLID para ninjas**: projetando classes flexíveis. São Paulo: Casa do Código, 2015.
-
-BROOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. **UML, guia do usuário**. trad. Fábio Freitas da Silva. Rio de Janeiro: Campus, 2000.
-
-MARTIN, Robert C. **Código limpo**: habilidades práticas do Agile Software. Rio de Janeiro: Alta Books, 2011.
-
-RUMBAUGH, James et al. **Modelagem e projetos baseados em objetos**. trad. Dalton Conde de Alencar. Rio de Janeiro: Campus, 1994.
