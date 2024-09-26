@@ -55,6 +55,8 @@ public class Order implements Comparable<Order>{
     @OneToMany
     private List<Fee> fees;
 
+
+    //TODO colocar no service de criação da Order
     public void calculateRawPrice(){
         BigDecimal rawTotal = this.stock.getPrice().multiply(BigDecimal.valueOf(getStockQuantity()));
         setRawPrice(rawTotal);

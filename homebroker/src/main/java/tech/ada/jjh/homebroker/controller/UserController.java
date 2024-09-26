@@ -28,11 +28,6 @@ public class UserController {
         return fetchUserService.fetchByCpf(cpf);
     }
 
-    @GetMapping(path = {"/{id}"})
-    public Optional<AppUser> findUserById(@PathVariable long id){
-        return fetchUserService.fetchById(id);
-    }
-
     @PostMapping()
     public AppUser createUser(@RequestBody AppUser appUser){
         return createUserService.createUser(appUser);
