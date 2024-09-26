@@ -10,79 +10,110 @@
 
 ```mermaid
 classDiagram
-namespace ModelClasses {
-
-class User {
-    String cpf - key
-    String name
-    String password
-    String email
-    String birthday
-    BigDecimal balance
-    List ~Portfolio~ portfolios
-    List ~Transaction~ transactionHistory
-    List ~Order~ orderHistory
+class AppUser {
+    - String cpf 
+    - String name
+    - String email
+    - String password
+    - String birthday
+    - BigDecimal balance
+    - List ~Transaction~ transactionHistory
+    - List ~Portfolio~ portfolios
+    - List ~Order~ orderHistory
     getters()
     setters()
 }
 
 class Order{
-    Long id - key
-    BigDecimal price
-    int status
-    Portfolio portfolio
-    ENUM.Type type
-    int stockQt
-    Stock stock
+    - Stock stock
+    - int stockQuantity
+    - BigDecimal rawPrice
+    - BigDecimal totalPrice
+    - Portfolio portfolio
+    - LocalDateTime dateTimeExecution
+    List~Fee~ fees
     getters()
     setters()
 }
 
 class Stock{
-    String ticker
-    String name
-    BigDecimal price
+    - String ticker
+    - String name
+    - BigDecimal price
     getters()
     setters()
 }
 
 class Broker{
-    Long id
-    String name
-    List ~Double~ fees
+    - String name
+    - List ~Fee~ fees
     getters()
     setters()
 }
 
 class Portfolio{
-    User appUser
-    Broker broker
-    List ~Stock~ stocks
+    - AppUser appUser
+    - Broker broker
+    - List ~Stock~ stocks
+    - List ~Order~ orderHistory
     getters()
     setters()
 }
 
 class Transaction{
-    Long id
-    BigDecimal amount
-    LocalDateTime dateTime
-    User appUser
+    - BigDecimal amount
+    - LocalDateTime dateTime
+    - AppUser appUser
     getters()
     setters()
 }
 
+class Fee{
+   - Double amount
+   - ENUM.FeeType type
 }
 
-User -- Transaction
-User -- Portfolio
-User --> Order
+AppUser -- Transaction
+AppUser -- Portfolio
+AppUser --> Order
 
-Order --> Portfolio
+Order -- Portfolio
 Order --> Stock
+Order --> Fee
 
 Portfolio --> Broker
 Portfolio --> Stock
+
+Broker --> Fee
 ```
+## Implementação de diferentes regras de cálculo para cada Fee
+```mermaid
+ class Fee{
+   - Double amount
+   - ENUM.FeeType type
+    }
+    class FeeType{
+        - FeeCalculationRule calculationRule
+        getCalculationRule()
+    }
+    class FeeCalculationRule{
+        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
+    }
+    class FeeFixedCalculationRule{
+        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
+    }
+    class FeePercentileCalculationRule{
+        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
+    }
+
+<<Enumeration>> FeeType
+<<Interface>> FeeCalculationRule
+Fee --> FeeType
+FeeType --> FeeCalculationRule
+FeeCalculationRule <|.. FeeFixedCalculationRule
+FeeCalculationRule <|.. FeePercentileCalculationRule
+```
+
 ## CRC Cards
 
 ```mermaid
