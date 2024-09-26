@@ -10,7 +10,7 @@
 
 ```mermaid
 classDiagram
-direction RL
+direction LR
 class AppUser {
     - String cpf 
     - String name
