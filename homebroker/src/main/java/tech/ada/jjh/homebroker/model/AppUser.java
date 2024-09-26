@@ -9,18 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "app_user")
 public class AppUser {
-
-    //fazer isso no service
-    public AppUser(){
-        setBalance(BigDecimal.valueOf(0.00));
-        setOrderHistory(new ArrayList<>());
-        setPortfolios(new ArrayList<>());
-        setTransactionHistory(new ArrayList<>());
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,15 +29,11 @@ public class AppUser {
     @Column(name = "user_password", nullable = false)
     private String password;
 
-    //TODO criar regra dos 18 anos no service e lançar exceção
     @Column(name = "user_birth", nullable = false)
     private String birthDate;
 
     @Column(name = "user_balance")
     private BigDecimal balance;
-
-    //TODO retirar do DTO
-    //pode ter um DTO de entrada e saída diferentes
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transaction> transactionHistory;
@@ -57,6 +43,82 @@ public class AppUser {
 
     @OneToMany
     private List<Order> orderHistory;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public List<Transaction> getTransactionHistory() {
+        return transactionHistory;
+    }
+
+    public void setTransactionHistory(List<Transaction> transactionHistory) {
+        this.transactionHistory = transactionHistory;
+    }
+
+    public List<Portfolio> getPortfolios() {
+        return portfolios;
+    }
+
+    public void setPortfolios(List<Portfolio> portfolios) {
+        this.portfolios = portfolios;
+    }
+
+    public void setOrderHistory(List<Order> orderHistory) {
+        this.orderHistory = orderHistory;
+    }
 
     //TODO mover para service
     public List<Order> getOrderHistory(){

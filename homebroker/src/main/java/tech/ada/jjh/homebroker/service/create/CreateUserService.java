@@ -1,12 +1,13 @@
 package tech.ada.jjh.homebroker.service.create;
 
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.dto.AppUserDTO;
+import tech.ada.jjh.homebroker.dto.AppUserDTOGet;
+import tech.ada.jjh.homebroker.dto.AppUserDTOPost;
 import tech.ada.jjh.homebroker.mapper.AppUserMapper;
-import tech.ada.jjh.homebroker.mapper.AppUserModelMapper;
 import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.repository.UserRepository;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 @Service
 public class CreateUserService {
@@ -14,17 +15,19 @@ public class CreateUserService {
     private final UserRepository userRepository;
     private final AppUserMapper appUserMapper;
 
-    public CreateUserService(UserRepository userRepository){
+    public CreateUserService(UserRepository userRepository, AppUserMapper appUserMapper){
         this.userRepository = userRepository;
-        this.appUserMapper = Mappers.getMapper(AppUserMapper.class);
-
+        this.appUserMapper = appUserMapper;
     }
 
-    public AppUserDTO execute(AppUserDTO appUserDTO){
-        var entity = AppUserModelMapper.toEntity(appUserDTO);
+    public AppUserDTOGet create(AppUserDTOPost appUserDTOPost){
+        //Regra de idade. Retornar uma exceção caso a pessoa for menor de 18 anos?
+        AppUser entity = appUserMapper.toAppUser(appUserDTOPost);
+        entity.setTransactionHistory(new ArrayList<>());
+        entity.setPortfolios(new ArrayList<>());
+        entity.setOrderHistory(new ArrayList<>());
+        entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);
-        return AppUserModelMapper.toDto(entity);
-
+        return appUserMapper.toAppUserDTOGet(entity);
     }
-
 }

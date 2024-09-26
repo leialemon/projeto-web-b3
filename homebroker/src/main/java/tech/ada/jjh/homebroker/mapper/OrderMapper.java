@@ -1,14 +1,13 @@
 package tech.ada.jjh.homebroker.mapper;
 
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import tech.ada.jjh.homebroker.dto.OrderDTO;
 import tech.ada.jjh.homebroker.model.Order;
 
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OrderMapper{
-    OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
     OrderDTO toDto(Order order);
-
     Order toEntity(OrderDTO orderDTO);
-
 }

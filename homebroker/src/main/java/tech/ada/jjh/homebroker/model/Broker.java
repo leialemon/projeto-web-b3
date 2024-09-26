@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Setter
-@Getter
 public class Broker {
 
     public Broker(){
@@ -25,4 +23,28 @@ public class Broker {
 
     @OneToMany
     private List<Fee> fees;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Fee> getFees() {
+        return fees;
+    }
+
+    public void setFees(List<Fee> fees) {
+        this.fees = fees;
+    }
 }

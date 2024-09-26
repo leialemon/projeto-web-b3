@@ -9,24 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Setter
-@Getter
 @Table(name = "stock_order")
 public class Order implements Comparable<Order>{
-
-    public Order(){
-        this.fees = new ArrayList<>();
-        Fee b3emolument = new Fee();
-        b3emolument.setAmount(0.03);
-        b3emolument.setName("b3emoluments");
-        b3emolument.setType(FeeType.EMOLUMENT);
-        this.fees.add(b3emolument);
-        Fee taxes = new Fee();
-        taxes.setName("taxes");
-        taxes.setAmount(0.02);
-        taxes.setType(FeeType.TAX);
-        this.fees.add(taxes);
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,6 +39,69 @@ public class Order implements Comparable<Order>{
     @OneToMany
     private List<Fee> fees;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public BigDecimal getRawPrice() {
+        return rawPrice;
+    }
+
+    public void setRawPrice(BigDecimal rawPrice) {
+        this.rawPrice = rawPrice;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public LocalDateTime getDateTimeExecution() {
+        return dateTimeExecution;
+    }
+
+    public void setDateTimeExecution(LocalDateTime dateTimeExecution) {
+        this.dateTimeExecution = dateTimeExecution;
+    }
+
+    public List<Fee> getFees() {
+        return fees;
+    }
+
+    public void setFees(List<Fee> fees) {
+        this.fees = fees;
+    }
 
     //TODO colocar no service de criação da Order
     public void calculateRawPrice(){

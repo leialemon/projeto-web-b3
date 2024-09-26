@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Setter
-@Getter
 public class Fee {
 
     @Id
@@ -23,4 +21,36 @@ public class Fee {
 
     @Column(name = "fee_name", nullable = false)
     String name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public FeeType getType() {
+        return type;
+    }
+
+    public void setType(FeeType type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
