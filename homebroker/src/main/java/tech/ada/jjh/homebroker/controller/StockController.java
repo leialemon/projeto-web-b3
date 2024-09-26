@@ -1,6 +1,8 @@
 package tech.ada.jjh.homebroker.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.service.create.CreateStockService;
 import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
@@ -21,26 +23,26 @@ public class StockController{
     }
 
     @GetMapping()
-    public List<Stock> getAll(){
+    public List<StockDTO> getAll(){
         return fetchStockService.fetchAll();
 
     }
 
     @GetMapping("/ticker/{ticker}")
-    public Optional<Stock> findStockByTicker(@PathVariable String ticker){
+    public Optional<StockDTO> findStockByTicker(@PathVariable String ticker){
         return fetchStockService.fetchByTicker(ticker);
 
     }
 
     @GetMapping("/{id}")
-    public Optional<Stock> findStockById(@PathVariable Long id){
+    public Optional<StockDTO> findStockById(@PathVariable Long id){
         return fetchStockService.fetchById(id);
 
     }
 
     @PostMapping()
-    public Stock insertStock(@RequestBody Stock stock){
-        return createStockService.createStock(stock);
+    public StockDTO insertStock(@Valid @RequestBody StockDTO stock){
+        return createStockService.execute(stock);
 
     }
 
