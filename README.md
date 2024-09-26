@@ -10,6 +10,7 @@
 
 ```mermaid
 classDiagram
+direction RL
 class AppUser {
     - String cpf 
     - String name
@@ -88,6 +89,7 @@ Broker --> Fee
 ```
 ## Implementação de diferentes regras de cálculo para cada Fee
 ```mermaid
+classDiagram
  class Fee{
    - Double amount
    - ENUM.FeeType type
