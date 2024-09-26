@@ -26,9 +26,4 @@ public class CreateStockService{
 
     }
 
-    public Stock createStock(Stock stock){
-        return stockRepository.save(stock);
-
-    }
-
 }

@@ -5,7 +5,7 @@ import tech.ada.jjh.homebroker.model.Portfolio;
 import tech.ada.jjh.homebroker.repository.PortfolioRepository;
 
 @Service
-public class CreatePortfolioService {
+public class CreatePortfolioService{
 
     private final PortfolioRepository portfolioRepository;
 

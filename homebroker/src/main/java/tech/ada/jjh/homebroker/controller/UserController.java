@@ -1,6 +1,8 @@
 package tech.ada.jjh.homebroker.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import tech.ada.jjh.homebroker.dto.AppUserDTO;
 import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.service.create.CreateUserService;
 import tech.ada.jjh.homebroker.service.fetch.FetchUserService;
@@ -19,17 +21,18 @@ public class UserController {
     }
 
     @GetMapping()
-    public List<AppUser> getAll(){
+    public List<AppUserDTO> getAll(){
         return fetchUserService.fetchAll();
+
     }
 
     @GetMapping("/cpf/{cpf}")
-    public Optional<AppUser> findUserByCpf(@PathVariable String cpf){
+    public Optional<AppUserDTO> findUserByCpf(@PathVariable String cpf){
         return fetchUserService.fetchByCpf(cpf);
     }
 
     @PostMapping()
-    public AppUser createUser(@RequestBody AppUser appUser){
-        return createUserService.createUser(appUser);
+    public AppUserDTO createUser(@Valid @RequestBody AppUserDTO appUserDTO){
+        return createUserService.execute(appUserDTO);
     }
 }
