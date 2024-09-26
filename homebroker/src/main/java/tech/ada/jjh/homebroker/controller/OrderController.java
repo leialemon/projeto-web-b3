@@ -1,10 +1,11 @@
 package tech.ada.jjh.homebroker.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import tech.ada.jjh.homebroker.model.Order;
+import tech.ada.jjh.homebroker.dto.OrderDTO;
 import tech.ada.jjh.homebroker.service.create.CreateOrderService;
 
 @Controller
@@ -18,8 +19,8 @@ public class OrderController{
     }
 
     @PostMapping
-    public Order createOrder(@RequestBody Order order){
-        return  createOrderService.createOrder(order);
+    public OrderDTO execute(@Valid @RequestBody OrderDTO order){
+        return  createOrderService.execute(order);
 
     }
 
