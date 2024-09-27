@@ -32,7 +32,7 @@ public class OrderDTOResponse {
     @NotBlank(message = "É necessário possuir ações.")
     private BigDecimal totalPrice;
 
-    private AppUser user;
+    private UserDTOForObjects user;
 
     private OrderStatus status;
 
@@ -75,11 +75,11 @@ public class OrderDTOResponse {
         this.dateTimeExecution = dateTimeExecution;
     }
 
-    public AppUser getUser() {
+    public UserDTOForObjects getUser() {
         return user;
     }
 
-    public void setUser(AppUser user) {
+    public void setUser(UserDTOForObjects user) {
         this.user = user;
     }
 
