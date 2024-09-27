@@ -1,8 +1,6 @@
 package tech.ada.jjh.homebroker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

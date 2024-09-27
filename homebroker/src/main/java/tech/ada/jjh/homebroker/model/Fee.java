@@ -1,8 +1,6 @@
 package tech.ada.jjh.homebroker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 public class Fee {

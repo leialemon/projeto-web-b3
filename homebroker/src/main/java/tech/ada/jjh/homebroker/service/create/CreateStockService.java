@@ -20,7 +20,6 @@ public class CreateStockService{
         var entity = stockMapper.toEntity(stock);
         entity = stockRepository.save(entity);
         return stockMapper.toDto(entity);
-
     }
 
 }

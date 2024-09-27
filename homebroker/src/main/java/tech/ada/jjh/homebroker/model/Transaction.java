@@ -1,14 +1,10 @@
 package tech.ada.jjh.homebroker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
 public class Transaction {
 
     @Id
@@ -25,4 +21,36 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
 }

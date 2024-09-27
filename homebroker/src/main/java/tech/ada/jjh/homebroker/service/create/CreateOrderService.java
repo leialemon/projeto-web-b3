@@ -1,7 +1,8 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.dto.OrderDTO;
+import tech.ada.jjh.homebroker.dto.OrderDTORequest;
+import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;
 import tech.ada.jjh.homebroker.model.Fee;
 import tech.ada.jjh.homebroker.model.FeeType;
@@ -19,7 +20,7 @@ public class CreateOrderService{
         this.orderMapper = orderMapper;
     }
 
-    public OrderDTO execute(OrderDTO order){
+    public OrderDTOResponse execute(OrderDTORequest order){
         var entity = orderMapper.toEntity(order);
         List<Fee> fees = new ArrayList<>();
         Fee b3emolument = new Fee();

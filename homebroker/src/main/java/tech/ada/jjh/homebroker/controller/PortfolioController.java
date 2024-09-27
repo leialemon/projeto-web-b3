@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.ada.jjh.homebroker.model.Portfolio;
 import tech.ada.jjh.homebroker.service.create.CreatePortfolioService;
 import tech.ada.jjh.homebroker.service.fetch.FetchPortfolioService;
-
 import java.util.List;
 
 @RestController

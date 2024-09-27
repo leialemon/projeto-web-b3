@@ -4,16 +4,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
-import tech.ada.jjh.homebroker.model.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-public class AppUserDTOPost {
+public class AppUserDTORequest {
 
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
     @NotBlank(message = "O nome não pode estar em branco.")
@@ -35,7 +28,7 @@ public class AppUserDTOPost {
     @Email(message = "Formato de e-mail inválido.")
     private String email;
 
-    private String emailProvider;
+//    private String emailProvider;
 
     public @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres") @NotBlank(message = "O nome não pode estar em branco.") String getName() {
         return name;
@@ -77,14 +70,14 @@ public class AppUserDTOPost {
         this.email = email;
     }
 
-    public String getEmailProvider() {
-        return emailProvider;
-    }
-
-    private String setEmailProvider(String email){
-        if (email != null && email.contains("@")){
-            return email.substring(email.indexOf("@") + 1);
-        }
-        return null;
-    }
+//    public String getEmailProvider() {
+//        return emailProvider;
+//    }
+//
+//    private String setEmailProvider(String email){
+//        if (email != null && email.contains("@")){
+//            return email.substring(email.indexOf("@") + 1);
+//        }
+//        return null;
+//    }
 }
