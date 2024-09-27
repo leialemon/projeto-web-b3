@@ -43,7 +43,5 @@ public class StockController{
     @PostMapping()
     public StockDTO insertStock(@Valid @RequestBody StockDTO stock){
         return createStockService.execute(stock);
-
     }
-
 }

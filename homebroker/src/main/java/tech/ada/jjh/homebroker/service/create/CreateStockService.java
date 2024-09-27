@@ -5,6 +5,8 @@ import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.repository.StockRepository;
 
+import java.math.BigDecimal;
+
 @Service
 public class CreateStockService{
     private final StockRepository stockRepository;

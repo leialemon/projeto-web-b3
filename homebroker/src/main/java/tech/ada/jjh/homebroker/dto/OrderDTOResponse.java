@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Size;
 import tech.ada.jjh.homebroker.model.Fee;
 import tech.ada.jjh.homebroker.model.Portfolio;
 import tech.ada.jjh.homebroker.model.Stock;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,6 +34,8 @@ public class OrderDTOResponse {
     @Size(min = 1, message = "É necessário possuir ações.")
     @NotBlank(message = "É necessário possuir ações.")
     private BigDecimal totalPrice;
+
+    //TODO ver como vai ficar a lógica do ticker
 
     @Size(min = 4, max = 7, message = "O Ticker deve ter entre 4 e 7 caracteres")
     @NotBlank(message = "O ticker da ação não pode estar em branco.")

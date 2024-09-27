@@ -6,9 +6,12 @@ import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
 import tech.ada.jjh.homebroker.dto.AppUserDTORequest;
 import tech.ada.jjh.homebroker.model.AppUser;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AppUserMapper{
 
     AppUserDTOResponse toAppUserDTOResponse(AppUser appUser);
     AppUser toAppUser(AppUserDTORequest appUserDTORequest);
+    List<AppUserDTOResponse> listToDto(List<AppUser> users);
 }

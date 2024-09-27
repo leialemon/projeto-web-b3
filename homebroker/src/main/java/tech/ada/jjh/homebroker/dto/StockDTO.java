@@ -3,11 +3,10 @@ package tech.ada.jjh.homebroker.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-
 import java.math.BigDecimal;
 
 public class StockDTO{
-    @NotBlank(message = "O preço não pode estar em branco.")
+
     private BigDecimal price;
 
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
@@ -19,7 +18,7 @@ public class StockDTO{
     private String ticker;
 
 
-    public @NotBlank(message = "O preço não pode estar em branco.") BigDecimal getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
