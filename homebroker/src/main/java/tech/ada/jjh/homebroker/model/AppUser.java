@@ -38,7 +38,7 @@ public class AppUser {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Portfolio> portfolios;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<Order> orderHistory;
 
     public Long getId() {

@@ -31,6 +31,17 @@ public class Order implements Comparable<Order>{
     @JoinColumn(name = "portfolio_id")//, nullable = false)
     private Portfolio portfolio;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private AppUser user;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private OrderStatus status;
+
+    @Column
+    private LocalDateTime dateTimeCreation;
+
     @Column
     private LocalDateTime dateTimeExecution;
 
@@ -99,6 +110,30 @@ public class Order implements Comparable<Order>{
 
     public void setFees(List<Fee> fees) {
         this.fees = fees;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
+
+    public LocalDateTime getDateTimeCreation() {
+        return dateTimeCreation;
+    }
+
+    public void setDateTimeCreation(LocalDateTime dateTimeCreation) {
+        this.dateTimeCreation = dateTimeCreation;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     @Override

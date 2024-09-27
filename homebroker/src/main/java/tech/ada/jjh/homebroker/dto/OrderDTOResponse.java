@@ -2,9 +2,7 @@ package tech.ada.jjh.homebroker.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import tech.ada.jjh.homebroker.model.Fee;
-import tech.ada.jjh.homebroker.model.Portfolio;
-import tech.ada.jjh.homebroker.model.Stock;
+import tech.ada.jjh.homebroker.model.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,7 +18,6 @@ public class OrderDTOResponse {
     @NotBlank(message = "É necessário incluir uma carteira.")
     private Portfolio portfolio;
 
-    @NotBlank(message = "É necessário incluir o horário de entrada.")
     private LocalDateTime dateTimeExecution;
 
     @Size(min = 1, message = "É necessário possuir ações.")
@@ -35,11 +32,12 @@ public class OrderDTOResponse {
     @NotBlank(message = "É necessário possuir ações.")
     private BigDecimal totalPrice;
 
-    //TODO ver como vai ficar a lógica do ticker
+    private AppUser user;
 
-    @Size(min = 4, max = 7, message = "O Ticker deve ter entre 4 e 7 caracteres")
-    @NotBlank(message = "O ticker da ação não pode estar em branco.")
-    private String ticker;
+    private OrderStatus status;
+
+    @NotBlank(message = "É necessário incluir o horário de entrada.")
+    private LocalDateTime dateTimeCreation;
 
     public List<Fee> getFees() {
         return fees;
@@ -65,12 +63,36 @@ public class OrderDTOResponse {
         this.portfolio = portfolio;
     }
 
-    public @NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime getDateTimeExecution() {
+    public @NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime getDateTimeCreation() {
+        return dateTimeCreation;
+    }
+
+    public LocalDateTime getDateTimeExecution() {
         return dateTimeExecution;
     }
 
-    public void setDateTimeExecution(@NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime dateTimeExecution) {
+    public void setDateTimeExecution(LocalDateTime dateTimeExecution) {
         this.dateTimeExecution = dateTimeExecution;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public void setDateTimeCreation(@NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime dateTimeCreation) {
+        this.dateTimeCreation = dateTimeCreation;
     }
 
     public @Size(min = 1, message = "É necessário possuir ações.") @NotBlank(message = "É necessário possuir ações.") Integer getStockQuantity() {
@@ -97,11 +119,4 @@ public class OrderDTOResponse {
         this.totalPrice = totalPrice;
     }
 
-    public @Size(min = 4, max = 7, message = "O Ticker deve ter entre 4 e 7 caracteres") @NotBlank(message = "O ticker da ação não pode estar em branco.") String getTicker() {
-        return ticker;
-    }
-
-    public void setTicker(@Size(min = 4, max = 7, message = "O Ticker deve ter entre 4 e 7 caracteres") @NotBlank(message = "O ticker da ação não pode estar em branco.") String ticker) {
-        this.ticker = ticker;
-    }
 }

@@ -36,12 +36,11 @@ public class CreateOrderService{
     }
 
     public OrderDTOResponse execute(OrderDTORequest order){
-        String ticker = order.getStock();
+        String ticker = order.getStockTicker();
         Optional<Stock> stock = stockRepository.findByTicker(ticker);
         var entity = orderMapper.toEntity(order);
         if (stock.isPresent()){ entity.setStock(stock.get());}
         entity.setFees(createFeeService.createBasicFees());
-        entity.setDateTimeExecution(LocalDateTime.now());
         calculateTotalPrice(entity);
         calculateRawPrice(entity);
         entity = orderRepository.save(entity);
@@ -64,4 +63,6 @@ public class CreateOrderService{
         order.setTotalPrice(rawTotal);
     }
 
+    //Executar ou cancelar ordem. → checar se ela expirou
+    //Checar se o valor da ordem é inferior ou igual ao saldo do usuário
 }
