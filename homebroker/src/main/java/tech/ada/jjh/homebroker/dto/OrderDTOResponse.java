@@ -36,6 +36,8 @@ public class OrderDTOResponse {
 
     private OrderStatus status;
 
+    private OrderType type;
+
     @NotBlank(message = "É necessário incluir o horário de entrada.")
     private LocalDateTime dateTimeCreation;
 
@@ -119,4 +121,11 @@ public class OrderDTOResponse {
         this.totalPrice = totalPrice;
     }
 
+    public OrderType getType() {
+        return type;
+    }
+
+    public void setType(OrderType type) {
+        this.type = type;
+    }
 }

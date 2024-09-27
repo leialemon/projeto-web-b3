@@ -26,8 +26,8 @@ public class BrokerController {
         return createBrokerService.createBroker(brokerDTO);
     }
 
-    @PatchMapping
-    public BrokerDTO insertBrokerFee(Fee fee){
-
-    }
+//    @PatchMapping
+//    public BrokerDTO insertBrokerFee(Fee fee){
+//
+//    }
 }

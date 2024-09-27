@@ -39,6 +39,10 @@ public class Order implements Comparable<Order>{
     @Column
     private OrderStatus status;
 
+    @Enumerated(EnumType.STRING)
+    @Column
+    private OrderType type;
+
     @Column
     private LocalDateTime dateTimeCreation;
 
@@ -134,6 +138,14 @@ public class Order implements Comparable<Order>{
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public OrderType getType() {
+        return type;
+    }
+
+    public void setType(OrderType type) {
+        this.type = type;
     }
 
     @Override
