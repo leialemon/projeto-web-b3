@@ -7,18 +7,11 @@ import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;
 import tech.ada.jjh.homebroker.model.*;
-import tech.ada.jjh.homebroker.repository.FeeRepository;
 import tech.ada.jjh.homebroker.repository.OrderRepository;
-import tech.ada.jjh.homebroker.repository.StockRepository;
-import tech.ada.jjh.homebroker.repository.UserRepository;
 import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
 import tech.ada.jjh.homebroker.service.fetch.FetchUserService;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CreateOrderService{

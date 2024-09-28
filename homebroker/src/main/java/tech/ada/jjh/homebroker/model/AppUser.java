@@ -38,11 +38,24 @@ public class AppUser {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transaction> transactionHistory;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orderHistory;
+
+    public List<Stock> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
+    }
+
+    public List<Order> getOrderHistory() {
+        return orderHistory;
+    }
 //    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private List<Portfolio> portfolios;
 
-    @OneToMany(mappedBy = "user")
-    private List<Order> orderHistory;
+
 
     public Long getId() {
         return id;
@@ -120,12 +133,4 @@ public class AppUser {
         this.orderHistory = orderHistory;
     }
 
-    //TODO mover para service
-//    public List<Order> getOrderHistory(){
-//        for (Portfolio p : this.getPortfolios()){
-//            this.orderHistory.addAll(p.getOrderHistory());
-//        }
-//        this.orderHistory.sort(null);
-//        return this.orderHistory;
-//    }
 }

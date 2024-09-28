@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @Service
 public class CreateUserService {
-    //É aqui que deve ficar o check de idade?
+
     private final UserRepository userRepository;
     private final AppUserMapper appUserMapper;
 
@@ -26,6 +26,7 @@ public class CreateUserService {
         entity.setTransactionHistory(new ArrayList<>());
 //        entity.setPortfolios(new ArrayList<>());
         entity.setOrderHistory(new ArrayList<>());
+        entity.setStocks(new ArrayList<>());
         entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);
         return appUserMapper.toAppUserDTOResponse(entity);

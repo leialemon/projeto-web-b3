@@ -1,7 +1,8 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.dto.TransactionDTO;
+import tech.ada.jjh.homebroker.dto.TransactionDTORequest;
+import tech.ada.jjh.homebroker.dto.TransactionDTOResponse;
 import tech.ada.jjh.homebroker.mapper.TransactionMapper;
 import tech.ada.jjh.homebroker.model.Transaction;
 import tech.ada.jjh.homebroker.repository.TransactionRepository;
@@ -26,7 +27,7 @@ public class CreateTransactionService {
 
 
     //TODO conferir se valor do saque é menor ou igual ao valor do saldo do usuário
-    public TransactionDTO createTransaction(TransactionDTO transaction){
+    public TransactionDTOResponse createTransaction(TransactionDTORequest transaction){
         Transaction entity = transactionMapper.toEntity(transaction);
         entity.setAppUser(fetchUserService.getByCpf(transaction.getUserCpf()));
         entity.setDateTime(LocalDateTime.now());

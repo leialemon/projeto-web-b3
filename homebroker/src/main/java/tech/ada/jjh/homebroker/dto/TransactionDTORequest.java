@@ -4,20 +4,12 @@ import tech.ada.jjh.homebroker.model.TransactionType;
 
 import java.math.BigDecimal;
 
-public class TransactionDTO {
+public class TransactionDTORequest {
     private String userCpf;
 
     private BigDecimal amount;
 
     private TransactionType type;
-
-    public TransactionType getType() {
-        return type;
-    }
-
-    public void setType(TransactionType type) {
-        this.type = type;
-    }
 
     public String getUserCpf() {
         return userCpf;
@@ -33,5 +25,13 @@ public class TransactionDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
     }
 }

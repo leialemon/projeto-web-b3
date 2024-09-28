@@ -15,7 +15,7 @@ public class Order implements Comparable<Order>{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Stock stock;
 
     @Column(nullable = false)

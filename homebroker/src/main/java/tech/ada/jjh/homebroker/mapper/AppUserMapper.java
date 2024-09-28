@@ -12,8 +12,11 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AppUserMapper{
-
+    @Mapping(target = "transactionHistory", source = "transactionHistory")
+    @Mapping(target = "orderHistory", source = "orderHistory")
+    @Mapping(target = "stocks", source = "stocks")
     AppUserDTOResponse toAppUserDTOResponse(AppUser appUser);
+
     AppUser toAppUser(AppUserDTORequest appUserDTORequest);
     List<AppUserDTOResponse> listToDto(List<AppUser> users);
     UserDTOForObjects toDTOForObjects(AppUser appUser);

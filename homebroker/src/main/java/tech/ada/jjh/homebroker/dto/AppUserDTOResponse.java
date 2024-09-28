@@ -1,9 +1,8 @@
 package tech.ada.jjh.homebroker.dto;
 
 
-import tech.ada.jjh.homebroker.model.Order;
-import tech.ada.jjh.homebroker.model.Portfolio;
-import tech.ada.jjh.homebroker.model.Transaction;
+import tech.ada.jjh.homebroker.model.Stock;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -12,9 +11,10 @@ public class AppUserDTOResponse {
     private String name;
     private String email;
     private BigDecimal balance;
-    private List<TransactionDTO> transactionHistory;
+    private List<TransactionDTOResponse> transactionHistory;
 //    private List<Portfolio> portfolios;
-    private List<Order> orderHistory;
+    private List<OrderDTOResponse> orderHistory;
+    private List<StockDTO> stocks;
 
     public String getCpf() {
         return cpf;
@@ -48,14 +48,21 @@ public class AppUserDTOResponse {
         this.balance = balance;
     }
 
-    public List<TransactionDTO> getTransactionHistory() {
+    public List<TransactionDTOResponse> getTransactionHistory() {
         return transactionHistory;
     }
 
-    public void setTransactionHistory(List<TransactionDTO> transactionHistory) {
+    public void setTransactionHistory(List<TransactionDTOResponse> transactionHistory) {
         this.transactionHistory = transactionHistory;
     }
 
+    public List<StockDTO> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(List<StockDTO> stocks) {
+        this.stocks = stocks;
+    }
 //    public List<Portfolio> getPortfolios() {
 //        return portfolios;
 //    }
@@ -64,11 +71,11 @@ public class AppUserDTOResponse {
 //        this.portfolios = portfolios;
 //    }
 
-    public List<Order> getOrderHistory() {
+    public List<OrderDTOResponse> getOrderHistory() {
         return orderHistory;
     }
 
-    public void setOrderHistory(List<Order> orderHistory) {
+    public void setOrderHistory(List<OrderDTOResponse> orderHistory) {
         this.orderHistory = orderHistory;
     }
 }
