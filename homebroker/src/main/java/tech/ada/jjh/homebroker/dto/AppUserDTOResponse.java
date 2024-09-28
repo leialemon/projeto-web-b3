@@ -12,7 +12,7 @@ public class AppUserDTOResponse {
     private String name;
     private String email;
     private BigDecimal balance;
-    private List<Transaction> transactionHistory;
+    private List<TransactionDTO> transactionHistory;
 //    private List<Portfolio> portfolios;
     private List<Order> orderHistory;
 
@@ -48,11 +48,11 @@ public class AppUserDTOResponse {
         this.balance = balance;
     }
 
-    public List<Transaction> getTransactionHistory() {
+    public List<TransactionDTO> getTransactionHistory() {
         return transactionHistory;
     }
 
-    public void setTransactionHistory(List<Transaction> transactionHistory) {
+    public void setTransactionHistory(List<TransactionDTO> transactionHistory) {
         this.transactionHistory = transactionHistory;
     }
 
