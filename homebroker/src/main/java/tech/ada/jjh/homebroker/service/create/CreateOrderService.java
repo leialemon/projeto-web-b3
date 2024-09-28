@@ -22,19 +22,19 @@ import java.util.Optional;
 
 @Service
 public class CreateOrderService{
-    private final UserRepository userRepository;
+    private final FetchUserService fetchUserService;
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-    private final StockRepository stockRepository;
+    private final FetchStockService fetchStockService;
     private final CreateFeeService createFeeService;
 
 
-    public CreateOrderService(OrderRepository orderRepository, OrderMapper orderMapper, StockRepository stockRepository, CreateFeeService createFeeService, UserRepository userRepository){
+    public CreateOrderService(OrderRepository orderRepository, OrderMapper orderMapper, FetchStockService fetchStockService, CreateFeeService createFeeService, FetchUserService fetchUserService){
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
-        this.stockRepository = stockRepository;
+        this.fetchStockService = fetchStockService;
         this.createFeeService = createFeeService;
-        this.userRepository = userRepository;
+        this.fetchUserService = fetchUserService;
     }
 
     public OrderDTOResponse execute(OrderDTORequest order){
@@ -42,45 +42,38 @@ public class CreateOrderService{
         entity.setStock(setStock(order.getStockTicker()));
         entity.setFees(createFeeService.createBasicFees());
         entity.setUser(setUser(order.getUserCpf()));
-        calculateTotalPrice(entity);
         calculateRawPrice(entity);
+        calculateTotalPrice(entity);
         checkBalance(entity);
         entity.setDateTimeCreation(LocalDateTime.now());
         entity = orderRepository.save(entity);
         return orderMapper.toDto(entity);
     }
 
-    public void calculateRawPrice(Order order){
+    private void calculateRawPrice(Order order){
         BigDecimal rawTotal = order.getStock().getPrice().multiply(BigDecimal.valueOf(order.getStockQuantity()));
         order.setRawPrice(rawTotal);
     }
 
-    public void calculateTotalPrice(Order order){
-        List<Fee> fees = new ArrayList<>(order.getPortfolio().getBroker().getFees());
+    private void calculateTotalPrice(Order order){
         BigDecimal rawTotal = order.getRawPrice();
         BigDecimal feeTotal = BigDecimal.ZERO;
-        for (Fee fee : fees){
+        for (Fee fee : order.getFees()){
             feeTotal = feeTotal.add(fee.getType().getCalculationRule().calculate(rawTotal, fee.getAmount()));
         }
         rawTotal = rawTotal.add(feeTotal);
         order.setTotalPrice(rawTotal);
     }
 
-    public AppUser setUser(String cpf){
-        Optional<AppUser> user = userRepository.findByCpf(cpf);
-        if (user.isPresent()){
-            return user.get();
-        }
-        return null;
+    private AppUser setUser(String cpf){
+        return fetchUserService.getByCpf(cpf);
     }
 
-    public Stock setStock(String ticker){
-        Optional<Stock> stock = stockRepository.findByTicker(ticker);
-        if (stock.isPresent()){ return stock.get();}
-        return null;
+    private Stock setStock(String ticker){
+        return fetchStockService.getByTicker(ticker).orElse(null);
     }
 
-    public void checkBalance(Order order){
+    private void checkBalance(Order order){
         if (order.getTotalPrice().compareTo(order.getUser().getBalance()) > 0){
             order.setStatus(OrderStatus.CANCELED_LACK_FUNDS);
         } else {

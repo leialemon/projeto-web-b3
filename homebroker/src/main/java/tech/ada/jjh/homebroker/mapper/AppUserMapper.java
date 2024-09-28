@@ -1,6 +1,7 @@
 package tech.ada.jjh.homebroker.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
 import tech.ada.jjh.homebroker.dto.AppUserDTORequest;

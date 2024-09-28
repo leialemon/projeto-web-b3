@@ -15,8 +15,8 @@ public class OrderDTOResponse {
     @NotBlank(message = "É necessário incluir uma ação.")
     private Stock stock;
 
-    @NotBlank(message = "É necessário incluir uma carteira.")
-    private Portfolio portfolio;
+//    @NotBlank(message = "É necessário incluir uma carteira.")
+//    private Portfolio portfolio;
 
     private LocalDateTime dateTimeExecution;
 
@@ -57,13 +57,13 @@ public class OrderDTOResponse {
         this.stock = stock;
     }
 
-    public @NotBlank(message = "É necessário incluir uma carteira.") Portfolio getPortfolio() {
-        return portfolio;
-    }
-
-    public void setPortfolio(@NotBlank(message = "É necessário incluir uma carteira.") Portfolio portfolio) {
-        this.portfolio = portfolio;
-    }
+//    public @NotBlank(message = "É necessário incluir uma carteira.") Portfolio getPortfolio() {
+//        return portfolio;
+//    }
+//
+//    public void setPortfolio(@NotBlank(message = "É necessário incluir uma carteira.") Portfolio portfolio) {
+//        this.portfolio = portfolio;
+//    }
 
     public @NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime getDateTimeCreation() {
         return dateTimeCreation;

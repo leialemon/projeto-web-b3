@@ -13,7 +13,7 @@ public class AppUserDTOResponse {
     private String email;
     private BigDecimal balance;
     private List<Transaction> transactionHistory;
-    private List<Portfolio> portfolios;
+//    private List<Portfolio> portfolios;
     private List<Order> orderHistory;
 
     public String getCpf() {
@@ -56,13 +56,13 @@ public class AppUserDTOResponse {
         this.transactionHistory = transactionHistory;
     }
 
-    public List<Portfolio> getPortfolios() {
-        return portfolios;
-    }
-
-    public void setPortfolios(List<Portfolio> portfolios) {
-        this.portfolios = portfolios;
-    }
+//    public List<Portfolio> getPortfolios() {
+//        return portfolios;
+//    }
+//
+//    public void setPortfolios(List<Portfolio> portfolios) {
+//        this.portfolios = portfolios;
+//    }
 
     public List<Order> getOrderHistory() {
         return orderHistory;

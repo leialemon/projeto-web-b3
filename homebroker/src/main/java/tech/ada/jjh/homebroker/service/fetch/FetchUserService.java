@@ -4,6 +4,7 @@ package tech.ada.jjh.homebroker.service.fetch;
 import org.springframework.stereotype.Service;
 import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
 import tech.ada.jjh.homebroker.mapper.AppUserMapper;
+import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
@@ -23,10 +24,15 @@ public class FetchUserService{
         return userRepository.findById(id).map(appUserMapper::toAppUserDTOResponse);
     }
 
-    public Optional<AppUserDTOResponse> fetchByCpf(String cpf){
-        return userRepository.findByCpf(cpf).map(appUserMapper::toAppUserDTOResponse);
+    public AppUserDTOResponse fetchByCpf(String cpf){
+        return appUserMapper.toAppUserDTOResponse(userRepository.findByCpf(cpf));
     }
 
+    public AppUser getByCpf(String cpf){
+        return userRepository.findByCpf(cpf);
+    }
+
+    //TODO trocar para pageable
     public List<AppUserDTOResponse> fetchAll(){
         return userRepository.findAll().stream().map(appUserMapper::toAppUserDTOResponse).toList();
     }

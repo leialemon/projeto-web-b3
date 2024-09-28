@@ -18,12 +18,24 @@ public class Transaction {
     @Column(name = "transaction_date_time")
     private LocalDateTime dateTime;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transaction_type")
+    private TransactionType type;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
 
     public Long getId() {
         return id;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
     }
 
     public void setId(Long id) {

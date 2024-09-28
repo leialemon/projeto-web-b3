@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/cpf/{cpf}")
-    public Optional<AppUserDTOResponse> findUserByCpf(@PathVariable String cpf){
+    public AppUserDTOResponse findUserByCpf(@PathVariable String cpf){
         return fetchUserService.fetchByCpf(cpf);
     }
 

@@ -14,8 +14,9 @@ public class PatchOrderService {
     }
 
 //    public OrderDTOResponse executeOrder(OrderDTORequest order){
-//
+//      chamar o patchUser para modificar o saldo do usuário
 //    }
 }
 //Executar ou cancelar ordem. → checar se ela expirou
+// Apenas orders com status PENDING podem ser executadas
 // Se der tempo: checar se o preço da ação mudou

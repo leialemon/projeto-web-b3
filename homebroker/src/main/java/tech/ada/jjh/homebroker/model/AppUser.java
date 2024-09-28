@@ -32,13 +32,16 @@ public class AppUser {
     @Column(name = "user_balance")
     private BigDecimal balance;
 
+    @OneToMany
+    private List<Stock> stocks;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transaction> transactionHistory;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Portfolio> portfolios;
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Portfolio> portfolios;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "user")
     private List<Order> orderHistory;
 
     public Long getId() {
@@ -105,24 +108,24 @@ public class AppUser {
         this.transactionHistory = transactionHistory;
     }
 
-    public List<Portfolio> getPortfolios() {
-        return portfolios;
-    }
+//    public List<Portfolio> getPortfolios() {
+//        return portfolios;
+//    }
 
-    public void setPortfolios(List<Portfolio> portfolios) {
-        this.portfolios = portfolios;
-    }
+//    public void setPortfolios(List<Portfolio> portfolios) {
+//        this.portfolios = portfolios;
+//    }
 
     public void setOrderHistory(List<Order> orderHistory) {
         this.orderHistory = orderHistory;
     }
 
     //TODO mover para service
-    public List<Order> getOrderHistory(){
-        for (Portfolio p : this.getPortfolios()){
-            this.orderHistory.addAll(p.getOrderHistory());
-        }
-        this.orderHistory.sort(null);
-        return this.orderHistory;
-    }
+//    public List<Order> getOrderHistory(){
+//        for (Portfolio p : this.getPortfolios()){
+//            this.orderHistory.addAll(p.getOrderHistory());
+//        }
+//        this.orderHistory.sort(null);
+//        return this.orderHistory;
+//    }
 }

@@ -10,3 +10,4 @@ public class HomebrokerApplication{
 		SpringApplication.run(HomebrokerApplication.class, args);
 	}
 }
+// TODO corrigir o OrderHistory do usuário aparecendo como null

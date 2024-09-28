@@ -24,7 +24,7 @@ public class CreateUserService {
         //Regra de idade. Retornar uma exceção caso a pessoa for menor de 18 anos?
         AppUser entity = appUserMapper.toAppUser(appUserDTORequest);
         entity.setTransactionHistory(new ArrayList<>());
-        entity.setPortfolios(new ArrayList<>());
+//        entity.setPortfolios(new ArrayList<>());
         entity.setOrderHistory(new ArrayList<>());
         entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);

@@ -1,12 +1,12 @@
 package tech.ada.jjh.homebroker.model;
 
-public enum OrderType {
-    BUYING(new BalanceModifierSubtract()),
-    SELLING(new BalanceModifierAdd());
+public enum TransactionType {
+    DEPOSIT(new BalanceModifierAdd()),
+    WITHDRAWAL(new BalanceModifierSubtract());
 
     private final BalanceModifier balanceModifier;
 
-    OrderType(BalanceModifier balanceModifier){
+    TransactionType(BalanceModifier balanceModifier){
         this.balanceModifier = balanceModifier;
     }
 
