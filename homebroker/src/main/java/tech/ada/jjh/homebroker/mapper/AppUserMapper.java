@@ -10,7 +10,7 @@ import tech.ada.jjh.homebroker.model.AppUser;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {TransactionMapper.class, StockTickerMapper.class})
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {TransactionMapper.class, OrderMapper.class, StockTickerMapper.class})
 public interface AppUserMapper{
     @Mapping(target = "transactionHistoryDTO", source = "transactionHistory")
     @Mapping(target = "orderHistory", source = "orderHistory")
@@ -22,3 +22,4 @@ public interface AppUserMapper{
     UserDTOForObjects toDTOForObjects(AppUser appUser);
     UserDTOForObjects toDTOForObjects(AppUserDTOResponse appUserDTOResponse);
 }
+//expression = "java(orderMapper.listToDto(appUser.getOrderHistory()))
