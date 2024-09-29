@@ -27,8 +27,8 @@ public class FetchStockService {
         return stockRepository.findByTicker(ticker).map(stockMapper::toDto);
     }
 
-    public Optional<Stock> getByTicker(String ticker){
-        return stockRepository.findByTicker(ticker);
+    public Stock getByTicker(String ticker){
+        return stockRepository.findByTicker(ticker).orElse(null);
     }
 
     public List<StockDTO> fetchAll(){

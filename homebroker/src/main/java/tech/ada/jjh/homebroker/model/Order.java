@@ -31,10 +31,6 @@ public class Order implements Comparable<Order>{
     @Column(name = "order_total_price", precision = 16, scale = 4)
     private BigDecimal totalPrice;
 
-//    @ManyToOne
-//    @JoinColumn(name = "portfolio_id")//, nullable = false)
-//    private Portfolio portfolio;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser user;
@@ -103,14 +99,6 @@ public class Order implements Comparable<Order>{
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
-
-//    public Portfolio getPortfolio() {
-//        return portfolio;
-//    }
-//
-//    public void setPortfolio(Portfolio portfolio) {
-//        this.portfolio = portfolio;
-//    }
 
     public LocalDateTime getDateTimeExecution() {
         return dateTimeExecution;

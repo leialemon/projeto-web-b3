@@ -28,8 +28,6 @@ public class AppUserDTORequest {
     @Email(message = "Formato de e-mail inválido.")
     private String email;
 
-//    private String emailProvider;
-
     public @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres") @NotBlank(message = "O nome não pode estar em branco.") String getName() {
         return name;
     }

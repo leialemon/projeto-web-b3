@@ -12,15 +12,14 @@ public class AppUserDTOResponse {
     private String email;
     private BigDecimal balance;
     private List<TransactionDTOResponse> transactionHistoryDTO;
-//    private List<Portfolio> portfolios;
     private List<OrderDTOResponse> orderHistory;
-    private Map<StockDTO, Integer> portfolio;
+    private Map<String, Integer> portfolio;
 
-    public Map<StockDTO, Integer> getPortfolio() {
+    public Map<String, Integer> getPortfolio() {
         return portfolio;
     }
 
-    public void setPortfolio(Map<StockDTO, Integer> portfolio) {
+    public void setPortfolio(Map<String, Integer> portfolio) {
         this.portfolio = portfolio;
     }
 
@@ -63,14 +62,6 @@ public class AppUserDTOResponse {
     public void setTransactionHistoryDTO(List<TransactionDTOResponse> transactionHistoryDTO) {
         this.transactionHistoryDTO = transactionHistoryDTO;
     }
-
-//    public List<Portfolio> getPortfolios() {
-//        return portfolios;
-//    }
-//
-//    public void setPortfolios(List<Portfolio> portfolios) {
-//        this.portfolios = portfolios;
-//    }
 
     public List<OrderDTOResponse> getOrderHistory() {
         return orderHistory;

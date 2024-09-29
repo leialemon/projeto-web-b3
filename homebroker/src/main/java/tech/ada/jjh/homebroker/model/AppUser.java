@@ -56,9 +56,6 @@ public class AppUser {
     public List<Order> getOrderHistory() {
         return orderHistory;
     }
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private List<Portfolio> portfolios;
-
 
 
     public Long getId() {
@@ -124,14 +121,6 @@ public class AppUser {
     public void setTransactionHistory(List<Transaction> transactionHistory) {
         this.transactionHistory = transactionHistory;
     }
-
-//    public List<Portfolio> getPortfolios() {
-//        return portfolios;
-//    }
-
-//    public void setPortfolios(List<Portfolio> portfolios) {
-//        this.portfolios = portfolios;
-//    }
 
     public void setOrderHistory(List<Order> orderHistory) {
         this.orderHistory = orderHistory;
