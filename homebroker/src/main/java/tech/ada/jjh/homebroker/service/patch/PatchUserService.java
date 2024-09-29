@@ -19,10 +19,16 @@ public class PatchUserService {
     public void modifyUserBalance(Transaction transaction){
         AppUser user = transaction.getAppUser();
         user.setBalance(transaction.getType().getBalanceModifier().calculate(user.getBalance(), transaction.getAmount()));
+        userRepository.save(user);
     }
 
     public void modifyUserBalance(Order order){
         AppUser user = order.getUser();
         user.setBalance(order.getType().getBalanceModifier().calculate(user.getBalance(), order.getTotalPrice()));
+        userRepository.save(user);
+    }
+
+    public void modifyUserStock(Order order){
+        userRepository.save(order.getType().getPortfolioModifier().modifyPortfolio(order));
     }
 }

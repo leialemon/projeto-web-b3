@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "app_user")
@@ -32,8 +33,11 @@ public class AppUser {
     @Column(name = "user_balance")
     private BigDecimal balance;
 
-    @OneToMany
-    private List<Stock> stocks;
+    @ElementCollection
+    @CollectionTable(name = "user_portfolio", joinColumns = @JoinColumn(name = "user_id"))
+    @MapKeyJoinColumn(name = "stock_id")
+    @Column(name = "quantity")
+    private Map<Stock, Integer> portfolio;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transaction> transactionHistory;
@@ -41,12 +45,12 @@ public class AppUser {
     @OneToMany(mappedBy = "user")
     private List<Order> orderHistory;
 
-    public List<Stock> getStocks() {
-        return stocks;
+    public Map<Stock, Integer> getPortfolio() {
+        return portfolio;
     }
 
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
+    public void setPortfolio(Map<Stock, Integer> portfolio) {
+        this.portfolio = portfolio;
     }
 
     public List<Order> getOrderHistory() {

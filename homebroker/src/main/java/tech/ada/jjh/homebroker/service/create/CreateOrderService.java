@@ -1,8 +1,6 @@
 package tech.ada.jjh.homebroker.service.create;
 
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
 import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;
@@ -30,7 +28,7 @@ public class CreateOrderService{
         this.fetchUserService = fetchUserService;
     }
 
-    public OrderDTOResponse execute(OrderDTORequest order){
+    public OrderDTOResponse create(OrderDTORequest order){
         var entity = orderMapper.toEntity(order);
         entity.setStock(setStock(order.getStockTicker()));
         entity.setFees(createFeeService.createBasicFees());
@@ -38,6 +36,7 @@ public class CreateOrderService{
         calculateRawPrice(entity);
         calculateTotalPrice(entity);
         checkBalance(entity);
+        checkStocks(entity);
         entity.setDateTimeCreation(LocalDateTime.now());
         entity = orderRepository.save(entity);
         return orderMapper.toDto(entity);
@@ -49,14 +48,19 @@ public class CreateOrderService{
     }
 
     private void calculateTotalPrice(Order order){
-        BigDecimal rawTotal = order.getRawPrice();
+        BigDecimal totalPrice = order.getRawPrice();
         BigDecimal feeTotal = BigDecimal.ZERO;
         for (Fee fee : order.getFees()){
-            feeTotal = feeTotal.add(fee.getType().getCalculationRule().calculate(rawTotal, fee.getAmount()));
+            feeTotal = feeTotal.add(fee.getType().getCalculationRule().calculate(totalPrice, fee.getAmount()));
         }
-        rawTotal = rawTotal.add(feeTotal);
-        order.setTotalPrice(rawTotal);
+        if (order.getType().equals(OrderType.BUYING)){
+            totalPrice = totalPrice.add(feeTotal);
+        } else if (order.getType().equals(OrderType.SELLING)){
+            totalPrice = totalPrice.subtract(feeTotal);
+        }
+        order.setTotalPrice(totalPrice);
     }
+    // refatorar linhas 55-59 para estarem contidas no orderType?
 
     private AppUser setUser(String cpf){
         return fetchUserService.getByCpf(cpf);
@@ -71,6 +75,14 @@ public class CreateOrderService{
             order.setStatus(OrderStatus.CANCELED_LACK_FUNDS);
         } else {
             order.setStatus(OrderStatus.PENDING);
+        }
+    }
+
+    private void checkStocks(Order order){
+        if (order.getType().equals(OrderType.SELLING)){
+            if (order.getUser().getPortfolio().get(order.getStock()) < order.getStockQuantity()){
+                order.setStatus(OrderStatus.CANCELED_NOT_ENOUGH_STOCK);
+            }
         }
     }
 }

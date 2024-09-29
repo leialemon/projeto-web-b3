@@ -5,5 +5,6 @@ public enum OrderStatus {
     EXECUTED,
     CANCELED_BY_USER,
     CANCELED_LACK_FUNDS,
+    CANCELED_NOT_ENOUGH_STOCK,
     EXPIRED
 }

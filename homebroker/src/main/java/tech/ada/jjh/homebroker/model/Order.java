@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "stock_order")
@@ -14,6 +15,9 @@ public class Order implements Comparable<Order>{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @Column(name = "public_id")
+    private String uuid = UUID.randomUUID().toString();
 
     @ManyToOne
     private Stock stock;
@@ -51,6 +55,14 @@ public class Order implements Comparable<Order>{
 
     @OneToMany
     private List<Fee> fees;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public Long getId() {
         return id;

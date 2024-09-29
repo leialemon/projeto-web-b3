@@ -12,12 +12,13 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OrderMapper{
 
+    @Mapping(target = "uuid", source = "uuid")
     OrderDTOResponse toDto(Order order);
+
     List<OrderDTOResponse> listToDto(List<Order> orders);
 
     @Mapping(source = "stockQuantity", target = "stockQuantity")
     @Mapping(target = "stock", ignore = true)
     Order toEntity(OrderDTORequest orderDTORequest);
 
-    Order fromResponseToEntity(OrderDTOResponse orderDTOResponse);
 }

@@ -8,6 +8,7 @@ import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.repository.UserRepository;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public class CreateUserService {
@@ -26,7 +27,7 @@ public class CreateUserService {
         entity.setTransactionHistory(new ArrayList<>());
 //        entity.setPortfolios(new ArrayList<>());
         entity.setOrderHistory(new ArrayList<>());
-        entity.setStocks(new ArrayList<>());
+        entity.setPortfolio(new HashMap<>());
         entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);
         return appUserMapper.toAppUserDTOResponse(entity);

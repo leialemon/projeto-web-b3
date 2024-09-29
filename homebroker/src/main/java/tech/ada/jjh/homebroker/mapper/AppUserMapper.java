@@ -14,7 +14,7 @@ import java.util.List;
 public interface AppUserMapper{
     @Mapping(target = "transactionHistoryDTO", source = "transactionHistory")
     @Mapping(target = "orderHistory", source = "orderHistory")
-    @Mapping(target = "stocks", source = "stocks")
+    @Mapping(target = "portfolio", source = "portfolio")
     AppUserDTOResponse toAppUserDTOResponse(AppUser appUser);
 
     AppUser toAppUser(AppUserDTORequest appUserDTORequest);

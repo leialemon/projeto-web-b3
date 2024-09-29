@@ -20,6 +20,8 @@ public class OrderDTOResponse {
 
     private LocalDateTime dateTimeExecution;
 
+    private String uuid;
+
     @Size(min = 1, message = "É necessário possuir ações.")
     @NotBlank(message = "É necessário possuir ações.")
     private Integer stockQuantity;
@@ -67,6 +69,14 @@ public class OrderDTOResponse {
 
     public @NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime getDateTimeCreation() {
         return dateTimeCreation;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public LocalDateTime getDateTimeExecution() {

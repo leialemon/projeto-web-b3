@@ -1,13 +1,11 @@
 package tech.ada.jjh.homebroker.service.patch;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;
 import tech.ada.jjh.homebroker.model.Order;
 import tech.ada.jjh.homebroker.model.OrderStatus;
 import tech.ada.jjh.homebroker.repository.OrderRepository;
-import tech.ada.jjh.homebroker.service.fetch.FetchOrderService;
 
 import java.time.LocalDateTime;
 
@@ -24,20 +22,31 @@ public class PatchOrderService {
     }
 
     public OrderDTOResponse executeOrder(OrderDTOResponse order){
-        Order entity = orderMapper.fromResponseToEntity(order);
+        Order entity = orderRepository.findByUuid(order.getUuid());
         entity.setDateTimeExecution(LocalDateTime.now());
-        if (entity.getDateTimeExecution().isAfter(entity.getDateTimeCreation().plusMinutes(15))){
-            entity.setStatus(OrderStatus.EXPIRED);
-        } else {
-            entity.setStatus(OrderStatus.EXECUTED);
-            patchUserService.modifyUserBalance(entity);
+        if (entity.getStatus().equals(OrderStatus.PENDING)){
+            if(entity.getDateTimeExecution().isAfter(entity.getDateTimeCreation().plusMinutes(10))){
+                entity.setStatus(OrderStatus.EXPIRED);
+            } else {
+                patchUserService.modifyUserBalance(entity);
+                patchUserService.modifyUserStock(entity);
+                entity.setStatus(OrderStatus.EXECUTED);
+            }
         }
-        return orderMapper.toDto(entity);
+        return orderMapper.toDto(orderRepository.save(entity));
     }
 
     public OrderDTOResponse cancelOrder(OrderDTOResponse order){
-        order.setStatus(OrderStatus.CANCELED_BY_USER);
-        return order;
+        Order entity = orderRepository.findByUuid(order.getUuid());
+        entity.setDateTimeExecution(LocalDateTime.now());
+        if (entity.getStatus().equals(OrderStatus.PENDING)){
+            if(entity.getDateTimeExecution().isAfter(entity.getDateTimeCreation().plusMinutes(10))){
+                entity.setStatus(OrderStatus.EXPIRED);
+            } else {
+                entity.setStatus(OrderStatus.CANCELED_BY_USER);
+            }
+        }
+        return orderMapper.toDto(orderRepository.save(entity));
     }
 }
 

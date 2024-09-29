@@ -20,4 +20,8 @@ public class FetchOrderService {
     public List<OrderDTOResponse> findAll(){
         return orderMapper.listToDto(orderRepository.findAll());
     }
+
+    public OrderDTOResponse findByUuid(String uuid){
+        return orderMapper.toDto(orderRepository.findByUuid(uuid));
+    }
 }

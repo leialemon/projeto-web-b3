@@ -61,7 +61,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/users/cpf/75200724015",
+					"raw": "localhost:8080/api/v1/users/cpf/70143050001",
 					"host": [
 						"localhost"
 					],
@@ -71,7 +71,7 @@
 						"v1",
 						"users",
 						"cpf",
-						"75200724015"
+						"70143050001"
 					]
 				}
 			},
@@ -133,7 +133,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"stock\" : \"pto3\",\n    \"stockQuantity\" : \"3\",\n    \"userCpf\": \"75200724015\",\n    \"type\": \"BUYING\"\n}",
+					"raw": "{\n    \"stockTicker\" : \"pto3\",\n    \"stockQuantity\" : \"30\",\n    \"userCpf\": \"70143050001\",\n    \"type\": \"BUYING\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -170,6 +170,93 @@
 						"api",
 						"v1",
 						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Jebson Trindade\",\n    \"password\" : \"senha123\",\n    \"birthDate\" : \"11/09/1989\",\n    \"cpf\" : \"70143050001\",\n    \"email\" : \"jebson@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postStock2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\":\"15\",\n    \"name\":\"vale\",\n    \"ticker\":\"vale1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/stocks",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postTransactionDeposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"userCpf\":\"70143050001\",\n    \"amount\" : \"300\",\n    \"type\":\"DEPOSIT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transactions"
 					]
 				}
 			},
