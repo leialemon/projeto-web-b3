@@ -18,4 +18,6 @@ public interface OrderMapper{
     @Mapping(source = "stockQuantity", target = "stockQuantity")
     @Mapping(target = "stock", ignore = true)
     Order toEntity(OrderDTORequest orderDTORequest);
+
+    Order fromResponseToEntity(OrderDTOResponse orderDTOResponse);
 }
