@@ -18,7 +18,7 @@ class AppUser {
     - String password
     - String birthday
     - BigDecimal balance
-    - List ~Transaction~ transactionHistory
+    - List ~Transaction~ transactionHistoryDTO
     - List ~Portfolio~ portfolios
     - List ~Order~ orderHistory
     getters()

@@ -1,8 +1,5 @@
 package tech.ada.jjh.homebroker.dto;
 
-
-import tech.ada.jjh.homebroker.model.Stock;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,7 +8,7 @@ public class AppUserDTOResponse {
     private String name;
     private String email;
     private BigDecimal balance;
-    private List<TransactionDTOResponse> transactionHistory;
+    private List<TransactionDTOResponse> transactionHistoryDTO;
 //    private List<Portfolio> portfolios;
     private List<OrderDTOResponse> orderHistory;
     private List<StockDTO> stocks;
@@ -48,12 +45,12 @@ public class AppUserDTOResponse {
         this.balance = balance;
     }
 
-    public List<TransactionDTOResponse> getTransactionHistory() {
-        return transactionHistory;
+    public List<TransactionDTOResponse> getTransactionHistoryDTO() {
+        return transactionHistoryDTO;
     }
 
-    public void setTransactionHistory(List<TransactionDTOResponse> transactionHistory) {
-        this.transactionHistory = transactionHistory;
+    public void setTransactionHistoryDTO(List<TransactionDTOResponse> transactionHistoryDTO) {
+        this.transactionHistoryDTO = transactionHistoryDTO;
     }
 
     public List<StockDTO> getStocks() {

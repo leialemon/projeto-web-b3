@@ -10,5 +10,4 @@ public class HomebrokerApplication{
 		SpringApplication.run(HomebrokerApplication.class, args);
 	}
 }
-// TODO corrigir o user de Transaction em transactionHistory aparecendo como null
-// TODO corrigir erro de transaction response aparecer com cpf null
+

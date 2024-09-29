@@ -33,7 +33,7 @@ public class CreateTransactionService {
         entity.setDateTime(LocalDateTime.now());
         patchUserService.modifyUserBalance(entity);
         entity.getAppUser().getTransactionHistory().add(entity);
-        return transactionMapper.toDto(transactionRepository.save(entity));
+        return transactionMapper.transactionToTransactionDTOResponse(transactionRepository.save(entity));
     }
 }
 

@@ -3,6 +3,7 @@ package tech.ada.jjh.homebroker.service.fetch;
 
 import org.springframework.stereotype.Service;
 import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
+import tech.ada.jjh.homebroker.dto.TransactionDTOResponse;
 import tech.ada.jjh.homebroker.mapper.AppUserMapper;
 import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.repository.UserRepository;

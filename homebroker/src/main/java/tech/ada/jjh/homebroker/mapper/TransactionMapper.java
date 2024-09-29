@@ -16,7 +16,7 @@ public interface TransactionMapper {
     Transaction toEntity(TransactionDTORequest transactionDTORequest);
 
     @Mapping(target = "user", source = "appUser")
-    TransactionDTOResponse toDto(Transaction transaction);
+    TransactionDTOResponse transactionToTransactionDTOResponse(Transaction transaction);
 
     List<TransactionDTOResponse> listToDto(List<Transaction> transactions);
 }

@@ -10,10 +10,10 @@ import java.util.List;
 
 public class OrderDTOResponse {
 
-    private List<Fee> fees;
+    private List<FeeDTO> fees;
 
     @NotBlank(message = "É necessário incluir uma ação.")
-    private Stock stock;
+    private StockDTO stock;
 
 //    @NotBlank(message = "É necessário incluir uma carteira.")
 //    private Portfolio portfolio;
@@ -41,19 +41,19 @@ public class OrderDTOResponse {
     @NotBlank(message = "É necessário incluir o horário de entrada.")
     private LocalDateTime dateTimeCreation;
 
-    public List<Fee> getFees() {
+    public List<FeeDTO> getFees() {
         return fees;
     }
 
-    public void setFees(List<Fee> fees) {
+    public void setFees(List<FeeDTO> fees) {
         this.fees = fees;
     }
 
-    public @NotBlank(message = "É necessário incluir uma ação.") Stock getStock() {
+    public @NotBlank(message = "É necessário incluir uma ação.") StockDTO getStock() {
         return stock;
     }
 
-    public void setStock(@NotBlank(message = "É necessário incluir uma ação.") Stock stock) {
+    public void setStock(@NotBlank(message = "É necessário incluir uma ação.") StockDTO stock) {
         this.stock = stock;
     }
 

@@ -10,9 +10,9 @@ import tech.ada.jjh.homebroker.model.AppUser;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {TransactionMapper.class})
 public interface AppUserMapper{
-    @Mapping(target = "transactionHistory", source = "transactionHistory")
+    @Mapping(target = "transactionHistoryDTO", source = "transactionHistory")
     @Mapping(target = "orderHistory", source = "orderHistory")
     @Mapping(target = "stocks", source = "stocks")
     AppUserDTOResponse toAppUserDTOResponse(AppUser appUser);
