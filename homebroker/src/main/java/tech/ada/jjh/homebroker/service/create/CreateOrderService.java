@@ -28,7 +28,10 @@ public class CreateOrderService{
         this.fetchUserService = fetchUserService;
     }
 
-    public OrderDTOResponse create(OrderDTORequest order){
+    public OrderDTOResponse create(OrderDTORequest order) throws Exception {
+        if (!checkPassword(order)){
+            throw new Exception("Incorrect Password!");
+        }
         var entity = orderMapper.toEntity(order);
         entity.setStock(setStock(order.getStockTicker()));
         entity.setFees(createFeeService.createBasicFees());
@@ -39,7 +42,9 @@ public class CreateOrderService{
         checkStocks(entity);
         entity.setDateTimeCreation(LocalDateTime.now());
         entity = orderRepository.save(entity);
-        return orderMapper.toDto(entity);
+        OrderDTOResponse response = orderMapper.toDto(entity);
+        response.setStockTicker(entity.getStock().getTicker());
+        return response;
     }
 
     private void calculateRawPrice(Order order){
@@ -84,5 +89,13 @@ public class CreateOrderService{
                 order.setStatus(OrderStatus.CANCELED_NOT_ENOUGH_STOCK);
             }
         }
+    }
+
+    private boolean checkPassword(OrderDTORequest order){
+        boolean correctPassword = false;
+        if(fetchUserService.getByCpf(order.getUserCpf()).getPassword().equals(order.getUserPassword())){
+            correctPassword = true;
+        }
+        return correctPassword;
     }
 }

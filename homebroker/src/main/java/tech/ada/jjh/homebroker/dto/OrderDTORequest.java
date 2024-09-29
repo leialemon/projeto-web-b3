@@ -17,6 +17,16 @@ public class OrderDTORequest {
 
     private OrderType type;
 
+    private String userPassword;
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
     public Integer getStockQuantity() {
         return stockQuantity;
     }

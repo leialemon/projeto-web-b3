@@ -13,6 +13,7 @@ import java.util.List;
 public interface OrderMapper{
 
     @Mapping(target = "uuid", source = "uuid")
+    @Mapping(target = "stockTicker", ignore = true)
     OrderDTOResponse toDto(Order order);
 
     List<OrderDTOResponse> listToDto(List<Order> orders);

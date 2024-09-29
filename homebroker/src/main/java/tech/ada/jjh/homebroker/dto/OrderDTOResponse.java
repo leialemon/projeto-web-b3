@@ -12,8 +12,7 @@ public class OrderDTOResponse {
 
     private List<FeeDTO> fees;
 
-    @NotBlank(message = "É necessário incluir uma ação.")
-    private StockDTO stock;
+    private String stockTicker;
 
 //    @NotBlank(message = "É necessário incluir uma carteira.")
 //    private Portfolio portfolio;
@@ -51,21 +50,13 @@ public class OrderDTOResponse {
         this.fees = fees;
     }
 
-    public @NotBlank(message = "É necessário incluir uma ação.") StockDTO getStock() {
-        return stock;
+    public String getStockTicker() {
+        return stockTicker;
     }
 
-    public void setStock(@NotBlank(message = "É necessário incluir uma ação.") StockDTO stock) {
-        this.stock = stock;
+    public void setStockTicker(String stockTicker) {
+        this.stockTicker = stockTicker;
     }
-
-//    public @NotBlank(message = "É necessário incluir uma carteira.") Portfolio getPortfolio() {
-//        return portfolio;
-//    }
-//
-//    public void setPortfolio(@NotBlank(message = "É necessário incluir uma carteira.") Portfolio portfolio) {
-//        this.portfolio = portfolio;
-//    }
 
     public @NotBlank(message = "É necessário incluir o horário de entrada.") LocalDateTime getDateTimeCreation() {
         return dateTimeCreation;
