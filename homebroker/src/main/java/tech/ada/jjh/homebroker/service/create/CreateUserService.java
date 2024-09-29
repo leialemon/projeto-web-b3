@@ -15,21 +15,23 @@ public class CreateUserService {
 
     private final UserRepository userRepository;
     private final AppUserMapper appUserMapper;
+    private final CreateAccessUserService createAccessUserService;
 
-    public CreateUserService(UserRepository userRepository, AppUserMapper appUserMapper){
+    public CreateUserService(UserRepository userRepository, AppUserMapper appUserMapper, CreateAccessUserService createAccessUserService){
         this.userRepository = userRepository;
         this.appUserMapper = appUserMapper;
+        this.createAccessUserService = createAccessUserService;
     }
 
     public AppUserDTOResponse create(AppUserDTORequest appUserDTORequest){
         //Regra de idade. Retornar uma exceção caso a pessoa for menor de 18 anos?
         AppUser entity = appUserMapper.toAppUser(appUserDTORequest);
         entity.setTransactionHistory(new ArrayList<>());
-//        entity.setPortfolios(new ArrayList<>());
         entity.setOrderHistory(new ArrayList<>());
         entity.setPortfolio(new HashMap<>());
         entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);
+        createAccessUserService.createAccessUser(entity.getCpf(), entity.getPassword());
         return appUserMapper.toAppUserDTOResponse(entity);
     }
 }

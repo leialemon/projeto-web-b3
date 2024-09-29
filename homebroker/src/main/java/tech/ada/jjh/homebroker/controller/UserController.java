@@ -21,18 +21,21 @@ public class UserController {
         this.fetchUserService = fetchUserService;
     }
 
+
     @GetMapping()
     public List<AppUserDTOResponse> getAll(){
         return fetchUserService.fetchAll();
 
     }
 
+
     @GetMapping(value = "/cpf/{cpf}")
     public AppUserDTOResponse findUserByCpf(@PathVariable String cpf){
         return fetchUserService.fetchByCpf(cpf);
     }
 
-    @PostMapping()
+
+    @PostMapping(value = "create")
     public AppUserDTOResponse createUser(@Valid @RequestBody AppUserDTORequest appUserDTORequest){
         return createUserService.create(appUserDTORequest);
     }
