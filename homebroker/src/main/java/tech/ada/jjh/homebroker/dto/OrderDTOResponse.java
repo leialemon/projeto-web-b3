@@ -14,9 +14,6 @@ public class OrderDTOResponse {
 
     private String stockTicker;
 
-//    @NotBlank(message = "É necessário incluir uma carteira.")
-//    private Portfolio portfolio;
-
     private LocalDateTime dateTimeExecution;
 
     private String uuid;

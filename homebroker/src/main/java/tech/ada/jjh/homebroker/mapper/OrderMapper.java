@@ -9,11 +9,11 @@ import tech.ada.jjh.homebroker.model.Order;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = StockTickerMapper.class)
 public interface OrderMapper{
 
     @Mapping(target = "uuid", source = "uuid")
-    @Mapping(target = "stockTicker", ignore = true)
+    @Mapping(target = "stockTicker", source = "stock")
     OrderDTOResponse toDto(Order order);
 
     List<OrderDTOResponse> listToDto(List<Order> orders);

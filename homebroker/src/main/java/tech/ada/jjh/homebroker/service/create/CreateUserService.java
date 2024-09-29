@@ -34,15 +34,14 @@ public class CreateUserService {
         entity.setPortfolio(new HashMap<>());
         entity.setBalance(BigDecimal.ZERO);
         entity = userRepository.save(entity);
-        AppUserDTOResponse response = appUserMapper.toAppUserDTOResponse(entity);
-        return mapPortfolio(response, entity);
+        return appUserMapper.toAppUserDTOResponse(entity);
     }
 
-    public static AppUserDTOResponse mapPortfolio(AppUserDTOResponse response, AppUser entity){
-        response.setPortfolio(new HashMap<>());
-        for (Stock stock : entity.getPortfolio().keySet()){
-            response.getPortfolio().put(stock.getTicker(), entity.getPortfolio().get(stock));
-        }
-        return response;
-    }
+//    public static AppUserDTOResponse mapPortfolio(AppUserDTOResponse response, AppUser entity){
+//        response.setPortfolio(new HashMap<>());
+//        for (Stock stock : entity.getPortfolio().keySet()){
+//            response.getPortfolio().put(stock.getTicker(), entity.getPortfolio().get(stock));
+//        }
+//        return response;
+//    }
 }

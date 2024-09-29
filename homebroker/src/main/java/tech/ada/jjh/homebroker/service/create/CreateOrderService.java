@@ -72,7 +72,7 @@ public class CreateOrderService{
     }
 
     private Stock setStock(String ticker){
-        return fetchStockService.getByTicker(ticker).orElse(null);
+        return fetchStockService.getByTicker(ticker);
     }
 
     private void checkBalance(Order order){
