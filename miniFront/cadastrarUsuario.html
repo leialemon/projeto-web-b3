@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Mini Homebroker</title>
+    <link rel="icon" href="./stock-exchange-app.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="titulo">ADA B3 inclua+ Mini Homebroker</h1>
+        <h2 class="titulo">Cadastrar usuário</h2>
+    </div>
+    <div class="formulario">
+        <form id="cadastrarUsuario">
+            <label for="fname">Nome:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="fcpf">CPF:</label><br>
+            <input type="text" id="fcpf" name="fcpf"><br>
+            <label for="fnascimento">Data de Nascimento</label><br>
+            <input type="date" id="fnascimento" name="fnascimento"><br>
+            <label for="femail">Email:</label><br>
+            <input type="text" id="femail" name="femail"><br>
+            <label for="fsenha">Senha:</label><br>
+            <input type="password" id="fsenha" name="fsenha"><br>
+            <input type="submit" value="Cadastrar">
+            <input type="reset" value="Limpar">
+            <button onclick="document.location='./index.html'">Voltar</button>
+        </form>
+    </div>
+    <br>
+    <div id="responseDiv">
+
+    </div>
+</body>
+
+</html>
