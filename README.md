@@ -71,15 +71,20 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 
 - A documentação OpenAPI foi gerada com [Springdoc](https://springdoc.org/).
 
-### Exceções customizadas
-
-
-
 ## Modelagem do projeto
 
 O projeto foi modelado a partir do mapeamento das entidades-chave em um [diagrama EER](https://github.com/leialemon/Ada-Homebroker?tab=readme-ov-file#modelagem-de-dados) e em um [diagrama UML de classes](https://github.com/leialemon/Ada-Homebroker/blob/main/README.md#diagrama-de-classes), seguidos da implementação em código.
 
 O padrão de design Strategy foi utilizado para gerenciar as regras de cálculo de preço de ordens e as modificações no saldo e portfolio do usuário. As classes que implementam este padrão estão no pacote `util`.
+
+### Exceções customizadas
+
+Criamos 4 exceções Runtime customizadas para maior transparência acerca dos processos do programa.
+
+- EntityNotFoundException : lançada quando é feita uma busca específica por uma entidade que não existe no banco. Torna o código 404 mais legível ao cliente.
+- IncorrectPassword : lançada quando uma requisição POST de Order é feita com a senha incorreta para o usuário informado. Retorna o código de status 401.
+- IsAMinorException : lançada quando se tenta cadastrar um usuário com idade inferior a 18 anos.
+- NotEnoughFundsException : lançada quando se tenta fazer uma Transaction de saque ou um Order de compra sem possuir o saldo necessário.
 
 ## Diagrama de classes 
 
@@ -139,8 +144,8 @@ class Fee{
    - Double amount
    - ENUM.FeeType type
 }
-AppUser --> Order
 AppUser --> Stock
+AppUser --> Order
 AppUser -- Transaction
 
 Order --> Stock
