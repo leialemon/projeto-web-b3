@@ -49,6 +49,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(IsAMinorException.class)
+    public ResponseEntity<String> handleInsufficientAge(IsAMinorException error){
+        return new ResponseEntity<>("O usuário precisa ter no mínimo 18 anos para usar o Homebroker.", HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleUniqueIndexGenerico(Exception error) {
         return new ResponseEntity<>("Você deve ter feito algo errado!.", HttpStatus.BAD_REQUEST);

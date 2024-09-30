@@ -33,7 +33,6 @@ public class FetchUserService{
         return userRepository.findByCpf(cpf);
     }
 
-    //TODO trocar para pageable
     public List<AppUserDTOResponse> fetchAll(){
         return userRepository.findAll().stream().map(appUserMapper::toAppUserDTOResponse).toList();
     }

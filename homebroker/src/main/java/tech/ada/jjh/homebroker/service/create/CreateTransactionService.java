@@ -28,8 +28,6 @@ public class CreateTransactionService {
         this.patchUserService = patchUserService;
     }
 
-
-    //TODO conferir se valor do saque é menor ou igual ao valor do saldo do usuário
     public TransactionDTOResponse createTransaction(TransactionDTORequest transaction){
         Transaction entity = transactionMapper.toEntity(transaction);
         entity.setAppUser(fetchUserService.getByCpf(transaction.getUserCpf()));
@@ -39,7 +37,7 @@ public class CreateTransactionService {
         return transactionMapper.transactionToTransactionDTOResponse(transactionRepository.save(entity));
     }
 
-    public void checkFunds(Transaction transaction){
+    private void checkFunds(Transaction transaction){
         if (transaction.getType().equals(TransactionType.WITHDRAWAL)){
             if(transaction.getAmount().compareTo(transaction.getAppUser().getBalance()) > 0){
                 transaction.setStatus(TransactionStatus.CANCELED);

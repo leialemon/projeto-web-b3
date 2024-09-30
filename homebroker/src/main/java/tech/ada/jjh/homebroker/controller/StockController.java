@@ -3,7 +3,6 @@ package tech.ada.jjh.homebroker.controller;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.jjh.homebroker.dto.StockDTO;
-import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.service.create.CreateStockService;
 import tech.ada.jjh.homebroker.service.delete.DeleteStockService;
 import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
@@ -49,7 +48,7 @@ public class StockController{
 
     @PostMapping()
     public StockDTO insertStock(@Valid @RequestBody StockDTO stock){
-        return createStockService.execute(stock);
+        return createStockService.create(stock);
     }
 
     @DeleteMapping("/delete/{ticker}")
