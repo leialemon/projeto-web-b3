@@ -25,7 +25,7 @@ public class PatchOrderService {
         Order entity = orderRepository.findByUuid(order.getUuid());
         entity.setDateTimeExecution(LocalDateTime.now());
         if (entity.getStatus().equals(OrderStatus.PENDING)){
-            if(entity.getDateTimeExecution().isAfter(entity.getDateTimeCreation().plusMinutes(10))){
+            if(entity.getDateTimeExecution().isAfter(entity.getDateTimeCreation().plusSeconds(30))){
                 entity.setStatus(OrderStatus.EXPIRED);
             } else {
                 patchUserService.modifyUserBalance(entity);
