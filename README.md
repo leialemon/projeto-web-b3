@@ -13,6 +13,40 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 
 > Este repositório possui um arquivo [JSON](Homebroker.postman_collection.json) com requisições do Postman que pode ser usadas para testar as funcionalidades da API. Bem como um [front-end minificado](miniFront) que desempenha as mesmas funções.
 
+#### AppUser
+- GET : O endpoint `/api/v1/users` retorna a lista de todos os usuários cadastrados no banco de dados, enquanto o `/api/v1/users/cpf/{cpf}` retorna o usuário que possui o cpf buscado.
+- PATCH : Não há um endpoint para requisições que alterem atributos do usuário, pois esses métodos são acessados apenas internamente pelas entidades de Order e Transaction.
+- POST : Para criar um novo usuário, a requisição deve ser feita no endpoint `/api/v1/users` e conter no body os dados necessários. Não é possível criar mais de um usuário com o mesmo cpf e este deve ser válido. A criação de um usuário com idade inferior à 18 anos também é impedida pelo programa.
+
+<p align="center">
+    <img>
+</p>
+
+#### Transaction
+- POST : Endpoint `/api/v1/transactions` com informações no corpo da requisição:
+
+<p align="center">
+    <img>
+</p>
+
+#### Order
+- PATCH : Após ser criada, a ordem fica com status pendente e só irá porduzir efeitos se o usuário a confirmar através do método PATCH. Também é possível cancelá-la. É possível estabelecer um tempo após o qual a ordem expira automaticamente, caso não seja confirmada nem cancelada pelo usuário.
+- POST : Endpoint `/api/v1/orders` com informações no corpo da requisição:
+
+<p align="center">
+    <img>
+</p>
+
+#### Stock
+- GET : O endpoint `/api/v1/stocks` retorna todas as ações cadastradas enquanto o endpoint `api/v1/stocks/ticker/{ticker}` retorna apenas a ação correspondente ao ticker informado.
+- PATCH : `/api/v1/stocks/alter/{ticker}/price?price={price}` Permite alterar o valor das ações.
+- DELETE : O endpoint `/api/v1/stocks/delete/{ticker}` apaga do banco de dados a ação que possui o ticker informado.
+- POST : O endpoint `/api/v1/stocks` com o método POST deve conter no corpo da requisição os atributos necessários para criar uma nova ação:
+
+<p align="center">
+    <img>
+</p>
+
 ### Documentação OpenAPI 
 <p align="center">
 <img  width="50" height="50" src="./README-contents/swagger.png" alt="Ícone swagger"> 
@@ -36,6 +70,9 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 - Utilizamos [H2](https://www.h2database.com/html/main.html) com JPA como banco de dados em memória.
 
 - A documentação OpenAPI foi gerada com [Springdoc](https://springdoc.org/).
+
+### Exceções customizadas
+
 
 
 ## Modelagem do projeto
