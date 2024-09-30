@@ -31,12 +31,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(JdbcSQLIntegrityConstraintViolationException.class)
     public ResponseEntity<String> handleUniqueIndex(JdbcSQLIntegrityConstraintViolationException error) {
-        return new ResponseEntity<>("Erro ao criar entidade que já existe", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Entidade já está cadastrada no banco de dados", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<String> handleUniqueIndexGenerico(JdbcSQLIntegrityConstraintViolationException error) {
-        return new ResponseEntity<>("Erro ao criar entidade que já existe no banco.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Entidade já está cadastrada no banco de dados", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
@@ -54,8 +54,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("O usuário precisa ter no mínimo 18 anos para usar o Homebroker.", HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleUniqueIndexGenerico(Exception error) {
-        return new ResponseEntity<>("Você deve ter feito algo errado!.", HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(IncorrectPassword.class)
+    public ResponseEntity<String> handleIncorrectPassword(IncorrectPassword error){
+        return new ResponseEntity<>(error.getMessage(), HttpStatus.UNAUTHORIZED);
     }
+
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<String> handleUniqueIndexGenerico(Exception error) {
+//        return new ResponseEntity<>("Você deve ter feito algo errado!.", HttpStatus.BAD_REQUEST);
+//    }
 }

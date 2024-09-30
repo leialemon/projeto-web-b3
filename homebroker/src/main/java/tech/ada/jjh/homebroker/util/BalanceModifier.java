@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.model;
+package tech.ada.jjh.homebroker.util;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,7 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
+import tech.ada.jjh.homebroker.config.IncorrectPassword;
 import tech.ada.jjh.homebroker.config.NotEnoughFundsException;
 import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
@@ -99,6 +100,8 @@ public class CreateOrderService{
         boolean correctPassword = false;
         if(fetchUserService.getByCpf(order.getUserCpf()).getPassword().equals(order.getUserPassword())){
             correctPassword = true;
+        } else {
+            throw new IncorrectPassword("Senha de usuário incorreta");
         }
         return correctPassword;
     }
