@@ -1,15 +1,13 @@
 package tech.ada.jjh.homebroker.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.ada.jjh.homebroker.dto.TransactionDTORequest;
 import tech.ada.jjh.homebroker.dto.TransactionDTOResponse;
 import tech.ada.jjh.homebroker.service.create.CreateTransactionService;
 
 @RestController
 @RequestMapping("api/v1/transactions")
+@CrossOrigin(origins = "*")
 public class TransactionController {
 
     private final CreateTransactionService createTransactionService;

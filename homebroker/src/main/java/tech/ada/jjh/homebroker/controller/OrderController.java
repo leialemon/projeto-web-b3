@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/orders")
+@CrossOrigin(origins = "*")
 public class OrderController{
     private final CreateOrderService createOrderService;
     private final FetchOrderService fetchOrderService;

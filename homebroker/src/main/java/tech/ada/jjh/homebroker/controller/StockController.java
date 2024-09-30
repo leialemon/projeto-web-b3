@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/stocks")
+@CrossOrigin(origins = "*")
 public class StockController{
     CreateStockService createStockService;
     FetchStockService fetchStockService;
