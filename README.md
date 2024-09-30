@@ -8,7 +8,7 @@
 
 ## Documentação OpenAPI 
 <p align="center">
-<img  width="20" height="20" src="./README-contents/swagger.png" alt="Ícone swagger"> 
+<img  width="50" height="50" src="./README-contents/swagger.png" alt="Ícone swagger"> 
 </p>
 <p> A documentação OpenAPI spec está disponível no link: https://leialemon.github.io/Homebroker-ADA-B3-Swagger/</p>
 
