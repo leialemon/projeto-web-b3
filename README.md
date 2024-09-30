@@ -1,4 +1,27 @@
-# 🛠️ (Em andamento) Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
+# Homebroker ADA-B3
+### Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
+
+## Sobre o projeto
+
+O Homebroker é uma API REST desenvolvida em Java com Spring boot. Foi desenvolvido para aplicar os conhecimentos adquiridos sobre Spring Boot, REST e aplicações web no geral.
+
+Seu propósito é simular um sistema de corretagem online, onde os usuários podem gerenciar suas ações e fazer operações de compra e venda de ativos financeiros.
+
+#### Desenvolvido pelos alunos [Juliana Barros](https://github.com/leialemon), [Nero Haziel](https://github.com/HepoHB) e Jebson Trindade.
+
+## Usabilidade
+
+> Este repositório possui um arquivo [JSON](Homebroker.postman_collection.json) com requisições do Postman que pode ser usadas para testar as funcionalidades da API. Bem como um [front-end minificado](miniFront) que desempenha as mesmas funções.
+
+### Documentação OpenAPI 
+<p align="center">
+<img  width="50" height="50" src="./README-contents/swagger.png" alt="Ícone swagger"> 
+</p>
+<p> A documentação OpenAPI spec está disponível no link: https://leialemon.github.io/Homebroker-ADA-B3-Swagger/</p>
+
+
+# Detalhes técnicos
+
 ## Tecnologias utilizadas
 <p align="center">
     <a href="https://skillicons.dev">
@@ -6,11 +29,20 @@
     </a>
 </p>
 
-## Documentação OpenAPI 
-<p align="center">
-<img  width="50" height="50" src="./README-contents/swagger.png" alt="Ícone swagger"> 
-</p>
-<p> A documentação OpenAPI spec está disponível no link: https://leialemon.github.io/Homebroker-ADA-B3-Swagger/</p>
+### Outras ferramentas
+
+- Para agilizar o desenvolvimento do código, utilizamos o [Mapstruct](https://mapstruct.org/) para mapear as transformações entre as entidades do banco de dados e seus DTOs. Adicionalmente, criamos manualmente a classe StockTickerMapper, de modo a alimentar o código gerado pelo Mapstruct com transformações específicas à nossas entidades. As classes de mapeamento estão salvas no pacote `mapper`.
+
+- Utilizamos [H2](https://www.h2database.com/html/main.html) com JPA como banco de dados em memória.
+
+- A documentação OpenAPI foi gerada com [Springdoc](https://springdoc.org/).
+
+
+## Modelagem do projeto
+
+O projeto foi modelado a partir do mapeamento das entidades-chave em um [diagrama EER]() e em um [diagrama UML de classes](), seguidos da implementação em código.
+
+O padrão de design Strategy foi utilizado para gerenciar as regras de cálculo de preço de ordens e as modificações no saldo e portfolio do usuário. As classes que implementam este padrão estão no pacote `util`.
 
 ## Diagrama de classes 
 
@@ -93,107 +125,6 @@ Portfolio --> Stock
 
 Broker --> Fee
 ```
-## Implementação de diferentes regras de cálculo para cada Fee
-```mermaid
-classDiagram
- class Fee{
-   - Double amount
-   - ENUM.FeeType type
-    }
-    class FeeType{
-        - FeeCalculationRule calculationRule
-        getCalculationRule()
-    }
-    class FeeCalculationRule{
-        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
-    }
-    class FeeFixedCalculationRule{
-        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
-    }
-    class FeePercentileCalculationRule{
-        calculate(BigDecimal orderPrice, Double feeAmount) BigDecimal
-    }
-
-<<Enumeration>> FeeType
-<<Interface>> FeeCalculationRule
-Fee --> FeeType
-FeeType --> FeeCalculationRule
-FeeCalculationRule <|.. FeeFixedCalculationRule
-FeeCalculationRule <|.. FeePercentileCalculationRule
-```
-
-## CRC Cards
-
-```mermaid
-classDiagram
-direction RL
-namespace ModelCRCCards{
-    class UserCRC
-    class OrderCRC
-    class PortfolioCRC
-    class TransactionCRC
-    class BrokerCRC
-    class StockCRC
-}
-
-namespace UserCRC{
-    class UserResponsibiliy{
-        Represents the appUser of the system. \n It's the starting point for most of the processes 
-    }
-    class UserCollaboration{
-        Portfolio
-        Transaction
-        Order
-    }
-}
-
-namespace OrderCRC{
-    class OrderResponsibiliy{
-        Represents the appUser's orders. \n Manages the contents of a portfolio.
-    }
-    class OrderCollaboration{
-        Portfolio
-        Stock
-    }
-}
-
-namespace PortfolioCRC{
-    class PortfolioResponsibiliy{
-        Created when an appUser adds a broker. \n Contains Stocks. \n All orders must be placed from a portfolio.
-    }
-    class PortfolioCollaboration{
-        Broker
-        User
-        Order
-        Stock
-    }
-}
-
-namespace TransactionCRC{
-    class TransactionResponsibiliy{
-        Modifies an appUser's balance.
-    }
-    class TransactionCollaboration{
-        User
-    }
-}
-
-namespace BrokerCRC{
-    class BrokerResponsibiliy{
-        Represents the brokerage firms through which \n the appUser places the orders. \n Creates an unique portfolio for the appUser. \n Defines if fees are charged in an order \n and their amounts.
-    }
-    class BrokerCollaboration{
-        Portfolio
-    }
-}
-
-namespace StockCRC{
-    class StockResponsibiliy{
-        The negotiable asset. \n Contains the price that will inform \n if an automatic order will trigger.
-    }
-    class StockCollaboration
-}
-```
 
 ## Modelagem de dados
 
@@ -201,4 +132,3 @@ namespace StockCRC{
     <img src="./README-contents/EERProjetoB3.png" alt="Imagem do diagrama de modelagem de dados do projeto.">
 </p>
 
-## Padrões e escolhas de design
