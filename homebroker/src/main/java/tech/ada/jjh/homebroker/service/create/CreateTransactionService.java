@@ -1,10 +1,13 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
+import tech.ada.jjh.homebroker.config.NotEnoughFundsException;
 import tech.ada.jjh.homebroker.dto.TransactionDTORequest;
 import tech.ada.jjh.homebroker.dto.TransactionDTOResponse;
 import tech.ada.jjh.homebroker.mapper.TransactionMapper;
 import tech.ada.jjh.homebroker.model.Transaction;
+import tech.ada.jjh.homebroker.model.TransactionStatus;
+import tech.ada.jjh.homebroker.model.TransactionType;
 import tech.ada.jjh.homebroker.repository.TransactionRepository;
 import tech.ada.jjh.homebroker.service.fetch.FetchUserService;
 import tech.ada.jjh.homebroker.service.patch.PatchUserService;
@@ -31,9 +34,24 @@ public class CreateTransactionService {
         Transaction entity = transactionMapper.toEntity(transaction);
         entity.setAppUser(fetchUserService.getByCpf(transaction.getUserCpf()));
         entity.setDateTime(LocalDateTime.now());
-        patchUserService.modifyUserBalance(entity);
+        checkFunds(entity);
         entity.getAppUser().getTransactionHistory().add(entity);
         return transactionMapper.transactionToTransactionDTOResponse(transactionRepository.save(entity));
+    }
+
+    public void checkFunds(Transaction transaction){
+        if (transaction.getType().equals(TransactionType.WITHDRAWAL)){
+            if(transaction.getAmount().compareTo(transaction.getAppUser().getBalance()) > 0){
+                transaction.setStatus(TransactionStatus.CANCELED);
+                throw new NotEnoughFundsException("Saldo insuficiente para saque nesse valor");
+            } else{
+                patchUserService.modifyUserBalance(transaction);
+                transaction.setStatus(TransactionStatus.COMPLETED);
+            }
+        } else {
+            patchUserService.modifyUserBalance(transaction);
+            transaction.setStatus(TransactionStatus.COMPLETED);
+        }
     }
 }
 

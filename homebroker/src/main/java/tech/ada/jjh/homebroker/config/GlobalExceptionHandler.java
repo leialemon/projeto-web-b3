@@ -39,6 +39,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Erro ao criar entidade que já existe no banco.", HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handleEntityNotFound(EntityNotFoundException error){
+        return new ResponseEntity<>("Entidade não encontrada no banco de dados.", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NotEnoughFundsException.class)
+    public ResponseEntity<String> handleInsufficientFunds(NotEnoughFundsException error){
+        return new ResponseEntity<>(error.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleUniqueIndexGenerico(Exception error) {
         return new ResponseEntity<>("Você deve ter feito algo errado!.", HttpStatus.BAD_REQUEST);

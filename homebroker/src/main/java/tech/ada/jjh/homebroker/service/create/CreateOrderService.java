@@ -1,6 +1,7 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
+import tech.ada.jjh.homebroker.config.NotEnoughFundsException;
 import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;
@@ -30,7 +31,7 @@ public class CreateOrderService{
 
     public OrderDTOResponse create(OrderDTORequest order) throws Exception {
         if (!checkPassword(order)){
-            throw new Exception("Incorrect Password!");
+            throw new Exception("Senha incorreta!");
         }
         var entity = orderMapper.toEntity(order);
         entity.setStock(setStock(order.getStockTicker()));
@@ -76,8 +77,11 @@ public class CreateOrderService{
     }
 
     private void checkBalance(Order order){
-        if (order.getTotalPrice().compareTo(order.getUser().getBalance()) > 0){
-            order.setStatus(OrderStatus.CANCELED_LACK_FUNDS);
+        if (order.getType().equals(OrderType.BUYING)){
+            if (order.getTotalPrice().compareTo(order.getUser().getBalance()) > 0){
+                order.setStatus(OrderStatus.CANCELED_LACK_FUNDS);
+                throw new NotEnoughFundsException("Saldo insuficiente");
+            } else {order.setStatus(OrderStatus.PENDING);}
         } else {
             order.setStatus(OrderStatus.PENDING);
         }
