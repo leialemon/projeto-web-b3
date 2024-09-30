@@ -19,14 +19,14 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 - POST : Para criar um novo usuário, a requisição deve ser feita no endpoint `/api/v1/users` e conter no body os dados necessários. Não é possível criar mais de um usuário com o mesmo cpf e este deve ser válido. A criação de um usuário com idade inferior à 18 anos também é impedida pelo programa.
 
 <p align="center">
-    <img>
+    <img src="README-contents/postUser.png" alt="requisição POST para criar usuário">
 </p>
 
 #### Transaction
 - POST : Endpoint `/api/v1/transactions` com informações no corpo da requisição:
 
 <p align="center">
-    <img>
+    <img src="README-contents/postTransaction.png" alt="requisição POST para criar transação">
 </p>
 
 #### Order
@@ -34,7 +34,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 - POST : Endpoint `/api/v1/orders` com informações no corpo da requisição:
 
 <p align="center">
-    <img>
+    <img src="README-contents/postOrder.png" alt="requisição POST para criar ordem">
 </p>
 
 #### Stock
@@ -44,7 +44,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 - POST : O endpoint `/api/v1/stocks` com o método POST deve conter no corpo da requisição os atributos necessários para criar uma nova ação:
 
 <p align="center">
-    <img>
+    <img src="README-contents/postStock.png" alt="requisição POST para criar ação">
 </p>
 
 ### Documentação OpenAPI 
@@ -139,9 +139,9 @@ class Fee{
    - Double amount
    - ENUM.FeeType type
 }
-AppUser -- Transaction
 AppUser --> Order
 AppUser --> Stock
+AppUser -- Transaction
 
 Order --> Stock
 Order --> Fee
