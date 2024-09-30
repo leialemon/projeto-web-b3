@@ -1,4 +1,4 @@
-# Homebroker ADA-B3
+# 📊 Homebroker ADA-B3
 ### Projeto para o módulo Programação Web 2 do curso Back end em Java ADA B3+ inclua.
 
 ## Sobre o projeto
@@ -54,7 +54,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 <p> A documentação OpenAPI spec está disponível no link: https://leialemon.github.io/Homebroker-ADA-B3-Swagger/</p>
 
 
-# Detalhes técnicos
+# 🖥️ Detalhes técnicos
 
 ## Tecnologias utilizadas
 <p align="center">
