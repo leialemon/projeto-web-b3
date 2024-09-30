@@ -3,7 +3,7 @@ package tech.ada.jjh.homebroker.controller;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.jjh.homebroker.dto.StockDTO;
-import tech.ada.jjh.homebroker.model.Stock;
+import tech.ada.jjh.homebroker.exception.ResourceNotFoundException;
 import tech.ada.jjh.homebroker.service.create.CreateStockService;
 import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
 
@@ -30,8 +30,11 @@ public class StockController{
 
     @GetMapping("/ticker/{ticker}")
     public Optional<StockDTO> findStockByTicker(@PathVariable String ticker){
-        return fetchStockService.fetchByTicker(ticker);
-
+        Optional<StockDTO> stock = fetchStockService.fetchByTicker(ticker);
+        if (stock.isEmpty()) {
+            throw new ResourceNotFoundException("Stock com ticker " + ticker + " não encontrado.");
+        }
+        return stock;
     }
 
     @GetMapping("/{id}")
@@ -42,6 +45,14 @@ public class StockController{
 
     @PostMapping()
     public StockDTO insertStock(@Valid @RequestBody StockDTO stock){
-        return createStockService.execute(stock);
+        try{
+            return createStockService.execute(stock);
+
+        }catch (Exception e){
+            throw new RuntimeException("Erro ao inserir a ação: " + e.getMessage() + ". Ela possivelmente já existe na base de dados");
+
+        }
+
     }
+
 }
