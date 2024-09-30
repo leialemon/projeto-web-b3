@@ -102,6 +102,12 @@ class Fee{
    - Double amount
    - ENUM.FeeType type
 }
+AppUser -- Transaction
+AppUser --> Order
+AppUser --> Stock
+
+Order --> Stock
+Order --> Fee
 ```
 
 ## Modelagem de dados
