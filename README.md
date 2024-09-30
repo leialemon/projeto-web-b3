@@ -6,6 +6,10 @@
     </a>
 </p>
 
+## Documentação OpenAPI 
+
+<img src="./README-contents/swagger.png" alt="Ícone swagger"> <p> A documentação OpenAPI spec está disponível no link: https://leialemon.github.io/Homebroker-ADA-B3-Swagger/</p>
+
 ## Diagrama de classes 
 
 ```mermaid
