@@ -40,7 +40,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 
 ## Modelagem do projeto
 
-O projeto foi modelado a partir do mapeamento das entidades-chave em um [diagrama EER]() e em um [diagrama UML de classes](), seguidos da implementação em código.
+O projeto foi modelado a partir do mapeamento das entidades-chave em um [diagrama EER](https://github.com/leialemon/Ada-Homebroker?tab=readme-ov-file#modelagem-de-dados) e em um [diagrama UML de classes](), seguidos da implementação em código.
 
 O padrão de design Strategy foi utilizado para gerenciar as regras de cálculo de preço de ordens e as modificações no saldo e portfolio do usuário. As classes que implementam este padrão estão no pacote `util`.
 
