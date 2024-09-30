@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Mini Homebroker</title>
+    <link rel="icon" href="./stock-exchange-app.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="titulo">ADA B3 inclua+ Mini Homebroker</h1>
+        <h2 class="titulo">Fazer Transação</h2>
+    </div>
+    <div class="formulario">
+        <form id="fazerTransacao">
+            <label for="fcpf">CPF do usuário:</label><br>
+            <input type="text" id="fcpf" name="fcpf"><br>
+            <label for="fprice">Valor:</label><br>
+            <input type="text" id="fprice" name="fprice"><br>
+            <p>Tipo de transação:</p>
+            <input type="radio" id="deposito" name="deposito" value="DEPOSIT">
+            <label for="deposito">DEPÓSITO</label>
+            <input type="radio" id="saque" name="saque" value="WITHDRAWAL">
+            <label for="saque">SAQUE</label><br>
+            <input type="submit" value="Confirmar">
+            <input type="reset" value="Limpar">
+            <button onclick="document.location='./index.html'">Voltar</button>
+        </form>
+    </div>
+    <br>
+    <pre id="responseDiv">
+
+    </pre>
+</body>
+
+</html>

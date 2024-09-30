@@ -1,6 +1,7 @@
 package tech.ada.jjh.homebroker.service.fetch;
 
 import org.springframework.stereotype.Service;
+import tech.ada.jjh.homebroker.config.EntityNotFoundException;
 import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.model.Stock;
@@ -28,7 +29,7 @@ public class FetchStockService {
     }
 
     public Stock getByTicker(String ticker){
-        return stockRepository.findByTicker(ticker).orElse(null);
+        return stockRepository.findByTicker(ticker).orElseThrow(EntityNotFoundException::new);
     }
 
     public List<StockDTO> fetchAll(){

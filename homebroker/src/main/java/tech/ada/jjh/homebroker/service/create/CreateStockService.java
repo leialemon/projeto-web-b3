@@ -5,8 +5,6 @@ import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.repository.StockRepository;
 
-import java.math.BigDecimal;
-
 @Service
 public class CreateStockService{
     private final StockRepository stockRepository;
@@ -18,7 +16,7 @@ public class CreateStockService{
 
     }
 
-    public StockDTO execute(StockDTO stock){
+    public StockDTO create(StockDTO stock){
         var entity = stockMapper.toEntity(stock);
         entity = stockRepository.save(entity);
         return stockMapper.toDto(entity);

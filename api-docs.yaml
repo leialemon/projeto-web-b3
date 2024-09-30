@@ -1,0 +1,430 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/v1/users:
+    get:
+      tags:
+      - user-controller
+      operationId: getAll
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AppUserDTOResponse"
+    post:
+      tags:
+      - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppUserDTORequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppUserDTOResponse"
+  /api/v1/transactions:
+    post:
+      tags:
+      - transaction-controller
+      operationId: createTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionDTORequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TransactionDTOResponse"
+  /api/v1/stocks:
+    get:
+      tags:
+      - stock-controller
+      operationId: getAll_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StockDTO"
+    post:
+      tags:
+      - stock-controller
+      operationId: insertStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StockDTO"
+  /api/v1/orders:
+    get:
+      tags:
+      - order-controller
+      operationId: fetchAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OrderDTOResponse"
+    post:
+      tags:
+      - order-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderDTORequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/OrderDTOResponse"
+  /api/v1/stocks/alter/{ticker}/price:
+    patch:
+      tags:
+      - stock-controller
+      operationId: alterStockPrice
+      parameters:
+      - name: ticker
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: price
+        in: query
+        required: true
+        schema:
+          type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StockDTO"
+  /api/v1/orders/confirm/{uuid}:
+    patch:
+      tags:
+      - order-controller
+      operationId: execute
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/OrderDTOResponse"
+  /api/v1/orders/cancel/{uuid}:
+    patch:
+      tags:
+      - order-controller
+      operationId: cancel
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/OrderDTOResponse"
+  /api/v1/users/cpf/{cpf}:
+    get:
+      tags:
+      - user-controller
+      operationId: findUserByCpf
+      parameters:
+      - name: cpf
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppUserDTOResponse"
+  /api/v1/stocks/{id}:
+    get:
+      tags:
+      - stock-controller
+      operationId: findStockById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StockDTO"
+  /api/v1/stocks/ticker/{ticker}:
+    get:
+      tags:
+      - stock-controller
+      operationId: findStockByTicker
+      parameters:
+      - name: ticker
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StockDTO"
+  /api/v1/stocks/delete/{ticker}:
+    delete:
+      tags:
+      - stock-controller
+      operationId: deleteStock
+      parameters:
+      - name: ticker
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    AppUserDTORequest:
+      required:
+      - birthDate
+      - email
+      - name
+      - password
+      type: object
+      properties:
+        name:
+          maxLength: 100
+          minLength: 3
+          type: string
+        password:
+          maxLength: 32
+          minLength: 8
+          type: string
+        birthDate:
+          maxLength: 10
+          minLength: 10
+          type: string
+        cpf:
+          pattern: "\\d{11}"
+          type: string
+        email:
+          type: string
+    AppUserDTOResponse:
+      type: object
+      properties:
+        cpf:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        balance:
+          type: number
+        transactionHistoryDTO:
+          type: array
+          items:
+            $ref: "#/components/schemas/TransactionDTOResponse"
+        orderHistory:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderDTOResponse"
+        portfolio:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+    FeeDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          type: number
+          format: double
+    OrderDTOResponse:
+      required:
+      - dateTimeCreation
+      - rawPrice
+      - stockQuantity
+      - totalPrice
+      type: object
+      properties:
+        fees:
+          type: array
+          items:
+            $ref: "#/components/schemas/FeeDTO"
+        stockTicker:
+          type: string
+        dateTimeExecution:
+          type: string
+          format: date-time
+        uuid:
+          type: string
+        stockQuantity:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        rawPrice:
+          maximum: 2147483647
+          minimum: 1
+          type: number
+        totalPrice:
+          maximum: 2147483647
+          minimum: 1
+          type: number
+        user:
+          $ref: "#/components/schemas/UserDTOForObjects"
+        status:
+          type: string
+          enum:
+          - PENDING
+          - EXECUTED
+          - CANCELED_BY_USER
+          - CANCELED_LACK_FUNDS
+          - CANCELED_NOT_ENOUGH_STOCK
+          - EXPIRED
+        type:
+          type: string
+          enum:
+          - BUYING
+          - SELLING
+        dateTimeCreation:
+          type: string
+          format: date-time
+    TransactionDTOResponse:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/UserDTOForObjects"
+        amount:
+          type: number
+        type:
+          type: string
+          enum:
+          - DEPOSIT
+          - WITHDRAWAL
+        status:
+          type: string
+          enum:
+          - COMPLETED
+          - CANCELED
+    UserDTOForObjects:
+      type: object
+      properties:
+        name:
+          type: string
+        cpf:
+          type: string
+    TransactionDTORequest:
+      type: object
+      properties:
+        userCpf:
+          type: string
+        amount:
+          type: number
+        type:
+          type: string
+          enum:
+          - DEPOSIT
+          - WITHDRAWAL
+    StockDTO:
+      required:
+      - name
+      - ticker
+      type: object
+      properties:
+        price:
+          type: number
+        name:
+          maxLength: 100
+          minLength: 3
+          type: string
+        ticker:
+          maxLength: 7
+          minLength: 4
+          type: string
+    OrderDTORequest:
+      required:
+      - stockTicker
+      type: object
+      properties:
+        stockTicker:
+          maxLength: 7
+          minLength: 4
+          type: string
+        stockQuantity:
+          type: integer
+          format: int32
+        userCpf:
+          type: string
+        type:
+          type: string
+          enum:
+          - BUYING
+          - SELLING
+        userPassword:
+          type: string
