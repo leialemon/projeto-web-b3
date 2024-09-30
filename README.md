@@ -56,21 +56,25 @@ class AppUser {
     - String password
     - String birthday
     - BigDecimal balance
-    - List ~Transaction~ transactionHistoryDTO
-    - List ~Portfolio~ portfolios
+    - Map ~Stock, Integer~ portfolio
+    - List ~Transaction~ transactionHistory
     - List ~Order~ orderHistory
     getters()
     setters()
 }
 
 class Order{
+    - String uuid
     - Stock stock
-    - int stockQuantity
+    - Integer stockQuantity
     - BigDecimal rawPrice
     - BigDecimal totalPrice
-    - Portfolio portfolio
+    - AppUser user
+    - ENUM.OrderStatus status
+    - ENUM.OrderType type
+    - LocalDateTime dateTimeCreation
     - LocalDateTime dateTimeExecution
-    List~Fee~ fees
+    - List~Fee~ fees
     getters()
     setters()
 }
@@ -83,26 +87,13 @@ class Stock{
     setters()
 }
 
-class Broker{
-    - String name
-    - List ~Fee~ fees
-    getters()
-    setters()
-}
-
-class Portfolio{
-    - AppUser appUser
-    - Broker broker
-    - List ~Stock~ stocks
-    - List ~Order~ orderHistory
-    getters()
-    setters()
-}
 
 class Transaction{
     - BigDecimal amount
     - LocalDateTime dateTime
     - AppUser appUser
+    - ENUM.TransactionType type
+    - ENUM.TransactionStatus status
     getters()
     setters()
 }
@@ -111,19 +102,6 @@ class Fee{
    - Double amount
    - ENUM.FeeType type
 }
-
-AppUser -- Transaction
-AppUser -- Portfolio
-AppUser --> Order
-
-Order -- Portfolio
-Order --> Stock
-Order --> Fee
-
-Portfolio --> Broker
-Portfolio --> Stock
-
-Broker --> Fee
 ```
 
 ## Modelagem de dados
