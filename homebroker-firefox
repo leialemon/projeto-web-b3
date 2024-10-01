@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cd miniFront
+firefox index.html
+cd ..
+cd homebroker
+cd target
+java -jar homebroker-0.0.1-SNAPSHOT.jar
