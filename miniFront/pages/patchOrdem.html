@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Mini Homebroker</title>
+    <link rel="icon" href="./stock-exchange-app.png">
+    <link rel="stylesheet" href="../style.css">
+    <script src="patchOrdem.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="titulo">ADA B3 inclua+ Mini Homebroker</h1>
+        <h2 class="titulo">Confirmar ou cancelar ordem</h2>
+    </div>
+    <div>
+        <form class="formulario">
+            <label for="buuid">UUID:</label>
+            <input type="text" id="buuid" name="buuid"><br>
+        </form>
+    </div>
+    <div class="buttons">
+        <button onclick="handleConfirm()">Confirmar</button>
+        <button onclick="handleCancel()">Cancelar</button>
+        <button onclick="document.location='../index.html'">Voltar</button>
+    </div>
+    <br>
+    <pre id="responseDiv">
+
+    </pre>
+</body>
+
+</html>

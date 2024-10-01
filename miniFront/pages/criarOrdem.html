@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Mini Homebroker</title>
+    <link rel="icon" href="./stock-exchange-app.png">
+    <link rel="stylesheet" href="../style.css">
+    <script src="criarordem.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="titulo">ADA B3 inclua+ Mini Homebroker</h1>
+        <h2 class="titulo">Criar ordem</h2>
+    </div>
+    <div class="formulario">
+        <form id="criarOrdem">
+            <label for="fcpf">CPF do usuário:</label><br>
+            <input type="text" id="fcpf" name="fcpf"><br>
+            <label for="fsenha">Senha do usuário:</label><br>
+            <input type="password" id="fsenha" name="fsenha"><br>
+            <label for="fticker">Ticker da ação:</label><br>
+            <input type="text" id="fticker" name="fticker"><br>
+            <label for="fqt">Quantidade de papeis</label><br>
+            <input type="text" id="fqt" name="fqt"><br>
+            <p>Tipo de ordem:</p>
+            <input type="radio" id="compra" name="ordem" value="BUYING">
+            <label for="compra">COMPRA</label>
+            <input type="radio" id="venda" name="ordem" value="SELLING">
+            <label for="venda">VENDA</label><br>
+            <input type="submit" value="Confirmar">
+            <input type="reset" value="Limpar">
+        </form>
+    </div>
+    <div id="buttonBack">
+        <button onclick="document.location='../index.html'">Voltar</button>
+    </div>
+    <br>
+    <pre id="responseDiv">
+
+    </pre>
+</body>
+
+</html>

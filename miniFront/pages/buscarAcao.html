@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Mini Homebroker</title>
+    <link rel="icon" href="./stock-exchange-app.png">
+    <link rel="stylesheet" href="../style.css">
+    <script src="buscarAcao.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="titulo">ADA B3 inclua+ Mini Homebroker</h1>
+        <h2 class="titulo">Buscar ação por ticker</h2>
+    </div>
+    <div>
+        <form class="formulario">
+            <label for="bticker">TICKER:</label>
+            <input type="text" id="bticker" name="bticker"><br>
+            <input type="submit" value="Buscar" id="buscarStock">
+        </form>
+    </div>
+    <div class="buttons">
+        <button onclick="document.location='../index.html'">Voltar</button>
+    </div>
+    <br>
+    <pre id="responseDiv">
+
+    </pre>
+</body>
+
+</html>
