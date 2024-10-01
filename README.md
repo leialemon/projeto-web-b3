@@ -11,7 +11,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 
 ## Usabilidade
 
-> Este repositório possui um arquivo [JSON](Homebroker.postman_collection.json) com requisições do Postman que pode ser usadas para testar as funcionalidades da API. Bem como um [front-end minificado](miniFront) que desempenha as mesmas funções.
+> Este repositório possui um arquivo [JSON](Homebroker.postman_collection.json) com requisições do Postman que podem ser usadas para testar as funcionalidades da API, bem como um [front-end minificado](miniFront) que desempenha as mesmas funções.
 
 #### AppUser
 - GET : O endpoint `/api/v1/users` retorna a lista de todos os usuários cadastrados no banco de dados, enquanto o `/api/v1/users/cpf/{cpf}` retorna o usuário que possui o cpf buscado.
@@ -145,7 +145,7 @@ class Fee{
    - ENUM.FeeType type
 }
 AppUser --> Stock
-AppUser --> Order
+AppUser -- Order
 AppUser -- Transaction
 
 Order --> Stock
