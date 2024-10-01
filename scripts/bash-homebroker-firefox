@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-
+cd ..
 cd miniFront
-google-chrome index.html
+firefox index.html
+cd ..
 cd ..
 cd homebroker
 cd target
