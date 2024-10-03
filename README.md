@@ -12,6 +12,16 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 ## Usabilidade
 
 > Este repositório possui um arquivo [JSON](Homebroker.postman_collection.json) com requisições do Postman que podem ser usadas para testar as funcionalidades da API, bem como um [front-end minificado](miniFront) que desempenha as mesmas funções.
+> 
+<p align="center">
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=bash,powershell" alt="ícones do bash e powershell">
+    </a>
+</p>
+
+Para automatizar a execução da API com o miniFront, é possível utilizar um dos scripts disponíveis na pasta [scripts](scripts).
+
+Os scripts atendem a dois tipos de shells (bash e powershell) e dois navegadores (google chrome e firefox). Basta escolher o mais apropriado e executá-lo.
 
 #### AppUser
 - GET : O endpoint `/api/v1/users` retorna a lista de todos os usuários cadastrados no banco de dados, enquanto o `/api/v1/users/cpf/{cpf}` retorna o usuário que possui o cpf buscado.
@@ -59,7 +69,7 @@ Seu propósito é simular um sistema de corretagem online, onde os usuários pod
 ## Tecnologias utilizadas
 <p align="center">
     <a href="https://skillicons.dev">
-        <img src="https://skillicons.dev/icons?i=java,maven,spring,hibernate,postman,idea" alt="ícones das tecnologias usadas no projeto: java, maven, spring, postman e idea.">
+        <img src="https://skillicons.dev/icons?i=java,maven,spring,hibernate,postman,idea,html,css,js,vscode,nvim" alt="ícones das tecnologias usadas no projeto: java, maven, spring, postman e idea.">
     </a>
 </p>
 
