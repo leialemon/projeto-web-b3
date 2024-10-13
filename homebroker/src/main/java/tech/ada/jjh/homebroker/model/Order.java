@@ -156,5 +156,4 @@ public class Order implements Comparable<Order>{
         }
         return comparer;
     }
-    //TODO reimplementar status e type;
 }
