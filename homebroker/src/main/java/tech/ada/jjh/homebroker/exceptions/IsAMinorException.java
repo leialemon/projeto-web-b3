@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.config;
+package tech.ada.jjh.homebroker.exceptions;
 
 public class IsAMinorException extends RuntimeException{
 }

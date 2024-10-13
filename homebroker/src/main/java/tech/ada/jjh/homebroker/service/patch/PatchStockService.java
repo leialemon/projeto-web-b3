@@ -1,7 +1,7 @@
 package tech.ada.jjh.homebroker.service.patch;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.config.EntityNotFoundException;
+import tech.ada.jjh.homebroker.exceptions.EntityNotFoundException;
 import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.model.Stock;

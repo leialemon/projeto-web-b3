@@ -1,7 +1,7 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.config.NotEnoughFundsException;
+import tech.ada.jjh.homebroker.exceptions.NotEnoughFundsException;
 import tech.ada.jjh.homebroker.dto.TransactionDTORequest;
 import tech.ada.jjh.homebroker.dto.TransactionDTOResponse;
 import tech.ada.jjh.homebroker.mapper.TransactionMapper;

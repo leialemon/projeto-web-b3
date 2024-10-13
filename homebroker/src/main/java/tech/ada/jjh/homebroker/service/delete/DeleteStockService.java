@@ -1,7 +1,7 @@
 package tech.ada.jjh.homebroker.service.delete;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.config.EntityNotFoundException;
+import tech.ada.jjh.homebroker.exceptions.EntityNotFoundException;
 import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.repository.StockRepository;
 

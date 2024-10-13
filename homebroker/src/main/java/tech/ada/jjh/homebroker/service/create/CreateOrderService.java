@@ -1,8 +1,8 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.config.IncorrectPassword;
-import tech.ada.jjh.homebroker.config.NotEnoughFundsException;
+import tech.ada.jjh.homebroker.exceptions.IncorrectPassword;
+import tech.ada.jjh.homebroker.exceptions.NotEnoughFundsException;
 import tech.ada.jjh.homebroker.dto.OrderDTORequest;
 import tech.ada.jjh.homebroker.dto.OrderDTOResponse;
 import tech.ada.jjh.homebroker.mapper.OrderMapper;

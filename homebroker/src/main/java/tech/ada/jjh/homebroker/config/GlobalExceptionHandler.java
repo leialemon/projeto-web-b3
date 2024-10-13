@@ -7,6 +7,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import tech.ada.jjh.homebroker.exceptions.EntityNotFoundException;
+import tech.ada.jjh.homebroker.exceptions.IncorrectPassword;
+import tech.ada.jjh.homebroker.exceptions.IsAMinorException;
+import tech.ada.jjh.homebroker.exceptions.NotEnoughFundsException;
+
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,4 @@
-package tech.ada.jjh.homebroker.config;
-
-import org.springframework.web.bind.annotation.ResponseStatus;
+package tech.ada.jjh.homebroker.exceptions;
 
 
 public class NotEnoughFundsException extends RuntimeException{

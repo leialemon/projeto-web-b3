@@ -1,15 +1,12 @@
 package tech.ada.jjh.homebroker.service.create;
 
 import org.springframework.stereotype.Service;
-import tech.ada.jjh.homebroker.config.IsAMinorException;
+import tech.ada.jjh.homebroker.exceptions.IsAMinorException;
 import tech.ada.jjh.homebroker.dto.AppUserDTOResponse;
 import tech.ada.jjh.homebroker.dto.AppUserDTORequest;
 import tech.ada.jjh.homebroker.mapper.AppUserMapper;
 import tech.ada.jjh.homebroker.model.AppUser;
-import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.repository.UserRepository;
-import tech.ada.jjh.homebroker.service.fetch.FetchOrderService;
-import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
