@@ -12,10 +12,7 @@ import tech.ada.jjh.homebroker.mapper.OrderMapper;
 import tech.ada.jjh.homebroker.model.Order;
 import tech.ada.jjh.homebroker.model.OrderStatus;
 import tech.ada.jjh.homebroker.repository.OrderRepository;
-
 import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class PatchOrderServiceTest {
