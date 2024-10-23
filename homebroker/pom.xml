@@ -93,6 +93,7 @@
 						<exclude>tech/ada/**/mapper/*</exclude>
 						<exclude>tech/ada/**/dto/*</exclude>
 						<exclude>tech/ada/**/model/*</exclude>
+						<exclude>tech/ada/**/util/*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
