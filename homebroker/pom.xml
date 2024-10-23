@@ -89,10 +89,10 @@
 				<version>0.8.12</version>
 				<configuration>
 					<excludes>
-						<exclude>tech.ada/**/config</exclude>
-						<exclude>tech.ada/**/mapper</exclude>
-						<exclude>tech.ada/**/dto</exclude>
-						<exclude>tech.ada/**/model</exclude>
+						<exclude>tech/ada/**/config/*</exclude>
+						<exclude>tech/ada/**/mapper/*</exclude>
+						<exclude>tech/ada/**/dto/*</exclude>
+						<exclude>tech/ada/**/model/*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
