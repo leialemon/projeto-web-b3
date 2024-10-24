@@ -40,7 +40,7 @@ class TransactionControllerTest {
         when(createTransactionService.createTransaction(any(TransactionDTORequest.class))).thenReturn(transactionResponse);
         mockMVC.perform(post("/api/v1/transactions")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"stockId\":1, \"quantity\":10, \"price\":\"150.0\"}"))
+                        .content("{\"stockId\":1, \"quantity\":10, \"price\":\"370.0\"}"))
                         .andExpect(status().isOk())
                         .andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
