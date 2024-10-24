@@ -68,14 +68,4 @@ public class AppUserDTORequest {
         this.email = email;
     }
 
-//    public String getEmailProvider() {
-//        return emailProvider;
-//    }
-//
-//    private String setEmailProvider(String email){
-//        if (email != null && email.contains("@")){
-//            return email.substring(email.indexOf("@") + 1);
-//        }
-//        return null;
-//    }
 }

@@ -35,7 +35,7 @@ class TransactionControllerTest {
     }
 
     @Test
-    void testCreateTransaction() throws Exception{
+    void CreateTransactionTest() throws Exception{
         TransactionDTOResponse transactionResponse = new TransactionDTOResponse();
         when(createTransactionService.createTransaction(any(TransactionDTORequest.class))).thenReturn(transactionResponse);
         mockMVC.perform(post("/api/v1/transactions")
