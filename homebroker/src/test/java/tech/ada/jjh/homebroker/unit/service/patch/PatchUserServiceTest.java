@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.patch;
+package tech.ada.jjh.homebroker.unit.service.patch;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.ada.jjh.homebroker.model.*;
 import tech.ada.jjh.homebroker.repository.UserRepository;
+import tech.ada.jjh.homebroker.service.patch.PatchUserService;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 

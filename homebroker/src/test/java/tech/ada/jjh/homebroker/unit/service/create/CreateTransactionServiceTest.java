@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.create;
+package tech.ada.jjh.homebroker.unit.service.create;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,7 @@ import tech.ada.jjh.homebroker.model.AppUser;
 import tech.ada.jjh.homebroker.model.Transaction;
 import tech.ada.jjh.homebroker.model.TransactionType;
 import tech.ada.jjh.homebroker.repository.TransactionRepository;
+import tech.ada.jjh.homebroker.service.create.CreateTransactionService;
 import tech.ada.jjh.homebroker.service.fetch.FetchUserService;
 import tech.ada.jjh.homebroker.service.patch.PatchUserService;
 

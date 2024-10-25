@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.delete;
+package tech.ada.jjh.homebroker.unit.service.delete;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.ada.jjh.homebroker.config.EntityNotFoundException;
 import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.repository.StockRepository;
+import tech.ada.jjh.homebroker.service.delete.DeleteStockService;
 
 import java.util.Optional;
 

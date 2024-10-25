@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.create;
+package tech.ada.jjh.homebroker.unit.service.create;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.ada.jjh.homebroker.model.Fee;
 import tech.ada.jjh.homebroker.repository.FeeRepository;
+import tech.ada.jjh.homebroker.service.create.CreateFeeService;
 
 import java.util.List;
 

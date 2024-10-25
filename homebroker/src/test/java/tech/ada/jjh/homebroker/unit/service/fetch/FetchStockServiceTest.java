@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.fetch;
+package tech.ada.jjh.homebroker.unit.service.fetch;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,6 +12,7 @@ import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.repository.StockRepository;
+import tech.ada.jjh.homebroker.service.fetch.FetchStockService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.patch;
+package tech.ada.jjh.homebroker.unit.service.patch;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,6 +12,9 @@ import tech.ada.jjh.homebroker.mapper.OrderMapper;
 import tech.ada.jjh.homebroker.model.Order;
 import tech.ada.jjh.homebroker.model.OrderStatus;
 import tech.ada.jjh.homebroker.repository.OrderRepository;
+import tech.ada.jjh.homebroker.service.patch.PatchOrderService;
+import tech.ada.jjh.homebroker.service.patch.PatchUserService;
+
 import java.time.LocalDateTime;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,4 +1,4 @@
-package tech.ada.jjh.homebroker.service.create;
+package tech.ada.jjh.homebroker.unit.service.create;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import tech.ada.jjh.homebroker.dto.StockDTO;
 import tech.ada.jjh.homebroker.mapper.StockMapper;
 import tech.ada.jjh.homebroker.model.Stock;
 import tech.ada.jjh.homebroker.repository.StockRepository;
+import tech.ada.jjh.homebroker.service.create.CreateStockService;
 
 @ExtendWith(MockitoExtension.class)
 class CreateStockServiceTest {
