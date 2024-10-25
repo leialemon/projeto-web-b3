@@ -22,7 +22,7 @@ class FeeRepositoryTest {
     FeeRepository feeRepository;
 
     @BeforeEach
-    void setUp(){
+    public void setUp(){
         fee1 = new Fee();
         fee1.setType(FeeType.EMOLUMENT);
         fee1.setAmount(2D);
@@ -38,7 +38,7 @@ class FeeRepositoryTest {
     }
 
     @AfterEach
-    void tearDown(){
+    public void tearDown(){
         feeRepository.delete(fee1);
         feeRepository.delete(fee2);
     }
