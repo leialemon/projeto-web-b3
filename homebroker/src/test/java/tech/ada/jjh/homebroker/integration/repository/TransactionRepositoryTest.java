@@ -12,7 +12,6 @@ import tech.ada.jjh.homebroker.model.TransactionStatus;
 import tech.ada.jjh.homebroker.model.TransactionType;
 import tech.ada.jjh.homebroker.repository.TransactionRepository;
 import tech.ada.jjh.homebroker.repository.UserRepository;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
