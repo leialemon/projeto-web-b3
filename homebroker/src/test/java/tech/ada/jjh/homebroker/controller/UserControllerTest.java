@@ -30,7 +30,6 @@ class UserControllerTest{
     private FetchUserService fetchUserService;
     @InjectMocks
     private UserController userController;
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setUp(){
